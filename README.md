@@ -6,6 +6,8 @@ Every prompt from my videos, ready to copy. Tap the copy icon on any box, paste 
 
 New prompts are added here every time a video goes out. Newest first.
 
+**📘 [Get the free RIF Readiness Kit →](https://drive.google.com/file/d/1TXv3vlVcr1BoRWBVU2b8I4YGDCIa6npR/view?usp=sharing)**
+
 ---
 
 ## 3. Fix your weakest resume bullet
