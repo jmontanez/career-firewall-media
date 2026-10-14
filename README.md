@@ -10,6 +10,18 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 4. Answer a last-minute "need this by tomorrow" request
+
+Paste your boss's message, then this:
+
+```
+Write a short, friendly reply to this request. Confirm what's due and when, offer two scope options (a quick version by morning or a full version by end of day), and ask which matters most.
+```
+
+Why it works: your boss picks the scope, so you don't lose your night guessing.
+
+---
+
 ## 3. Fix your weakest resume bullet
 
 Paste one weak bullet from your resume, then this:
