@@ -10,6 +10,30 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 6. Answer "tell me about yourself" in 45 seconds
+
+Paste your resume, then this:
+
+```
+Write a 45-second answer to 'tell me about yourself': my current role, one result with a number, and why this job. Plain words.
+```
+
+Why it works: one real number turns a vague intro into proof.
+
+---
+
+## 5. Negotiate a layoff package
+
+Paste your severance letter (remove names and anything confidential), then this:
+
+```
+List every term I could negotiate, what to ask for, and draft a polite email asking for it.
+```
+
+Why it works: most people sign without asking about extra weeks of pay, health coverage, a prorated bonus, or a written reference. Not legal advice; check any agreement with HR or an employment lawyer.
+
+---
+
 ## 4. Answer a last-minute "need this by tomorrow" request
 
 Paste your boss's message, then this:
