@@ -94,6 +94,14 @@ Why it works: column 1 is your risk. Column 3 goes at the top of your resume.
 
 ---
 
+## Get all 30 prompts
+
+The Layoff Survival Prompt Kit: 30 prompts with a next step for each, a 14-day plan for the first two weeks after a layoff, and a before-you-sign severance checklist. Instant PDF, $9, money back if it doesn't help.
+
+**[Get the kit →](https://buy.stripe.com/6oU28t2SrfMo4Z2fct08g02)**
+
+---
+
 ## Want this done for your exact job?
 
 **The AI Career Firewall Audit: $39.** A 1-page layoff-readiness plan plus 5 AI prompts written for your role, back within 48 hours.
