@@ -10,6 +10,18 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 7. Draft your self-review
+
+Paste your notes from this year (wins, projects, numbers), then this:
+
+```
+Turn these notes into a self-review: 3 wins with numbers, 1 growth area, and what I'll own next quarter. Under 200 words.
+```
+
+Why it works: numbers make wins concrete, and naming what you'll own next shows you're planning ahead.
+
+---
+
 ## 6. Answer "tell me about yourself" in 45 seconds
 
 Paste your resume, then this:
