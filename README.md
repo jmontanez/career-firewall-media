@@ -10,6 +10,18 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 8. Ask for a raise with proof
+
+Paste your wins from this year (with numbers) and the market range for your role, then this:
+
+```
+Use these wins to write a short raise request for my manager: 3 results with numbers, the raise I'm asking for, and a calm reply if they say there's no budget.
+```
+
+Why it works: you walk in with results and a number, plus a plan if the answer is "not now."
+
+---
+
 ## 7. Draft your self-review
 
 Paste your notes from this year (wins, projects, numbers), then this:
