@@ -10,6 +10,18 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 9. Explain a gap in your resume
+
+Write down what happened and what you did during the gap (care, courses, freelance, projects), then this:
+
+```
+Turn this into a short, honest answer for "tell me about the gap in your resume": what happened, what I did, and why I'm ready now. Under 60 words.
+```
+
+Why it works: a short, honest answer that ends on "ready now" lets the interviewer move on to your skills.
+
+---
+
 ## 8. Ask for a raise with proof
 
 Paste your wins from this year (with numbers) and the market range for your role, then this:
