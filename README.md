@@ -10,6 +10,18 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 10. Write the thank-you email after an interview
+
+Paste your notes from the interview (who you met, what they need, what you talked about), then this:
+
+```
+Write a short thank-you email to my interviewer: thank them, mention one thing we talked about, and one reason I'm a fit. Under 100 words.
+```
+
+Why it works: a specific detail from the conversation shows you listened, and it lands the same day while they're still deciding.
+
+---
+
 ## 9. Explain a gap in your resume
 
 Write down what happened and what you did during the gap (care, courses, freelance, projects), then this:
