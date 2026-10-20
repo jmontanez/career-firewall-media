@@ -10,6 +10,18 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 11. Answer "what's your biggest weakness"
+
+Paste your resume, then this:
+
+```
+Give me an honest answer to "what's your biggest weakness": one real weakness that isn't core to this job, what I'm doing to fix it, and proof it's working. Under 60 words.
+```
+
+Why it works: a real weakness with a fix and proof sounds honest, and it keeps the focus on how you grow.
+
+---
+
 ## 10. Write the thank-you email after an interview
 
 Paste your notes from the interview (who you met, what they need, what you talked about), then this:
