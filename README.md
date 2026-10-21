@@ -10,6 +10,54 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 15. Know your runway (Layoff-proof, part 3)
+
+Paste your monthly costs and your savings, then this:
+
+```
+Sort these into must-pay, can-pause and can-cut, and tell me how many months my savings last in each case.
+```
+
+Why it works: you know exactly how long you have, and what to pause first, before you need to decide.
+
+---
+
+## 14. Find the jobs your skills already fit (Layoff-proof, part 2)
+
+Paste your job description, then this:
+
+```
+List 5 job titles at other companies that use these same skills, and the keywords their postings use.
+```
+
+Why it works: you learn where to look and which words to put on your resume before you need them.
+
+---
+
+## 13. Start a wins log (Layoff-proof, part 1)
+
+Every Friday, paste what you did this week, then this:
+
+```
+Turn this into 3 short wins with numbers I can use on my resume later. Ask me for any number I'm missing.
+```
+
+Why it works: your resume writes itself over the year, with real numbers you'd otherwise forget.
+
+---
+
+## 12. Answer "why did you leave your last job"
+
+Write down what happened and what you want next, then this:
+
+```
+Write a short, honest answer to "why did you leave your last job": what happened in one line, no blame, and what I want next. Under 50 words.
+```
+
+Why it works: one calm line about the past, then the conversation moves to what you want next.
+
+---
+
 ## 11. Answer "what's your biggest weakness"
 
 Paste your resume, then this:
