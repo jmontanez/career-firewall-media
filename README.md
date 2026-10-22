@@ -10,6 +10,30 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 17. Fix your LinkedIn before you need it (Layoff-proof, part 4)
+
+Paste your resume and the job title you want next, then this:
+
+```
+Rewrite my LinkedIn headline and About section so recruiters searching for my target job title find me. Use the keywords they search for.
+```
+
+Why it works: recruiters search by title and keywords, so a headline built from them puts you in their results before you're job hunting.
+
+---
+
+## 16. Reply to a recruiter's message
+
+Paste the recruiter's message, then this:
+
+```
+Write a short, friendly reply to this recruiter: say I'm interested, ask the pay range and if it's remote, and offer two times to talk. Under 70 words.
+```
+
+Why it works: you answer fast, get the two facts that decide whether it's worth your time, and make the next step easy.
+
+---
+
 ## 15. Know your runway (Layoff-proof, part 3)
 
 Paste your monthly costs and your savings, then this:
