@@ -10,6 +10,78 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 23. Make a 7-day plan after a layoff (Layoff-proof, part 7)
+
+Use it the day after a layoff, then this:
+
+```
+I was just laid off. Make a seven-day plan with one task a day: file for unemployment, set a budget, update my resume, and apply to ten jobs.
+```
+
+Why it works: one small task a day turns panic into progress, and the urgent paperwork comes first.
+
+---
+
+## 22. Cut your resume to one page
+
+Paste your full resume, then this:
+
+```
+Cut my resume to one page. Keep the bullets with numbers, drop jobs older than ten years, and put my three strongest skills at the top.
+```
+
+Why it works: recruiters skim fast, so the page should only hold results and the skills they're searching for.
+
+---
+
+## 21. Know what to ask HR if layoffs hit (Layoff-proof, part 6)
+
+Before any meeting about cuts, use this:
+
+```
+I may be laid off. List the 10 questions I should ask HR about severance, health insurance, unused vacation, stock and references, most important first.
+```
+
+Why it works: people forget their questions in a stressful meeting; a ranked list makes sure you ask about money and coverage first.
+
+---
+
+## 20. Push back on extra work without sounding difficult
+
+Paste your manager's request and what's already on your plate, then this:
+
+```
+Write a polite reply to my manager that says yes to the most important task, asks which of my other tasks can wait, and suggests a new deadline. Under 80 words.
+```
+
+Why it works: it says yes, shows your real workload, and hands the priority call back to your manager.
+
+---
+
+## 19. Warm up your network before you need it (Layoff-proof, part 5)
+
+Paste a former coworker's name and a project you did together, then this:
+
+```
+Write a short, friendly message to this former coworker. Mention our project, ask how they're doing, and don't ask for anything. Under 50 words.
+```
+
+Why it works: reaching out with no ask keeps the relationship warm, so asking for help later doesn't feel cold.
+
+---
+
+## 18. Know the interview questions before you walk in
+
+Paste the job posting and your resume, then this:
+
+```
+List the 5 questions this interviewer is most likely to ask me, and a one-line answer to each using my resume.
+```
+
+Why it works: the posting tells you what they'll probe, and practicing answers from your own resume makes them specific.
+
+---
+
 ## 17. Fix your LinkedIn before you need it (Layoff-proof, part 4)
 
 Paste your resume and the job title you want next, then this:
