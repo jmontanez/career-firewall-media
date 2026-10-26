@@ -8,6 +8,8 @@ New prompts are added here every time a video goes out. Newest first.
 
 **📘 [Get the free RIF Readiness Kit →](https://drive.google.com/file/d/1TXv3vlVcr1BoRWBVU2b8I4YGDCIa6npR/view?usp=sharing)**
 
+**🧩 [Get the free Claude resume skill →](skills/README.md)** Upload it once and Claude makes every resume bullet lead with a real number.
+
 ---
 
 ## 25. Answer "what are your salary expectations" (Offer negotiation, part 1)
