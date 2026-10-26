@@ -10,6 +10,30 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 25. Answer "what are your salary expectations" (Offer negotiation, part 1)
+
+Paste the job post, your city and your current pay, then this:
+
+```
+List three places to check the pay range for this role in my city. Then write a one-sentence answer to 'what are your salary expectations' that gives a range with my target near the top.
+```
+
+Why it works: a researched range anchors the talk high without locking you to one number, and you know where the number came from.
+
+---
+
+## 24. Can Claude find jobs for you? (Tool Drop: Claude's Indeed connector)
+
+Turn it on in Claude: Customize > Connectors > + > Indeed > Connect. Ask it to find jobs, for example "Find remote program manager jobs posted this week." Then paste your resume and this:
+
+```
+Here's my resume. Rank these jobs by how well I fit, and for each one list the two requirements I'm missing.
+```
+
+Why it works: the connector pulls real listings with links, and the ranking tells you where to apply first and what to address in your cover letter. It searches; you still apply on Indeed.
+
+---
+
 ## 23. Make a 7-day plan after a layoff (Layoff-proof, part 7)
 
 Use it the day after a layoff, then this:
