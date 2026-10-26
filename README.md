@@ -12,6 +12,42 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 28. Does ChatGPT search Indeed jobs now? (Tool Drop: ChatGPT's Indeed app)
+
+Turn it on: ChatGPT > Apps > Indeed > Connect, then type @Indeed and what you want. Before you apply to one, ask:
+
+```
+For this job, what would the hiring manager worry about in my background, and how do I answer each worry in one sentence?
+```
+
+Why it works: you answer the doubt in your cover letter and first interview answer before they raise it. You still apply on Indeed.
+
+---
+
+## 27. Can't remember your wins before your review? (Tool Drop: Claude's Gmail connector)
+
+Turn it on: Claude > Customize > Connectors > Gmail. Work account? Check your company's AI policy first. Then:
+
+```
+Search my sent mail from the last six months for launches, thank-yous and problems I fixed. List each with the date and one line on the result.
+```
+
+Why it works: your sent folder is a dated record of your wins, so your self-review comes with receipts. Claude asks before it sends anything.
+
+---
+
+## 26. Still taking meeting notes by hand? (Tool Drop: ChatGPT Record)
+
+Turn it on: the ChatGPT Mac app, Record button (Plus and other paid plans). Ask everyone before you record. When you stop, ask:
+
+```
+Turn this recording into a recap email: decisions, action items with owners and dates, and anything with no owner. Under 120 words.
+```
+
+Why it works: the person who sends the clear recap first is the person managers remember.
+
+---
+
 ## 25. Answer "what are your salary expectations" (Offer negotiation, part 1)
 
 Paste the job post, your city and your current pay, then this:
