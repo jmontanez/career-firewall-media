@@ -12,6 +12,42 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 31. "Why should we hire you if AI can do this job?" (Interview answer)
+
+Say: "AI can draft the work. I decide what's right, catch what it gets wrong, and get people to act on it." Then give one real example. No example ready? Paste the job description and:
+
+```
+Read this job description. List the 3 decisions in this job AI can't make on its own. Then write me a 40-word answer to 'why hire you if AI can do this?' using one real example from my resume.
+```
+
+Why it works: you don't argue with AI. You show the judgment the job still needs, with proof.
+
+---
+
+## 30. Recruiter asks "Do you have AI experience?" (Interview answer)
+
+Don't say no. Say: "I use AI every week for one part of my job, and it saves me about two hours." Not true yet? Paste your job description and:
+
+```
+Pick one task from this job I could do faster with AI this week. Give me the steps, then one sentence I can use to describe the result in an interview.
+```
+
+Why it works: do it once this week, and the answer is true.
+
+---
+
+## 29. Can Claude hand you a real Word file? (Tool Drop: Claude file creation)
+
+Turn it on: Claude > Settings > Capabilities > file creation (works on the free plan). Then paste your resume and the job posting:
+
+```
+Here's my resume and the job posting. Write a one-page cover letter as a Word document. Strongest numbers first. Don't invent anything I didn't give you.
+```
+
+Why it works: you get a .docx you can download and edit, with no copy-paste formatting fixes.
+
+---
+
 ## 28. Does ChatGPT search Indeed jobs now? (Tool Drop: ChatGPT's Indeed app)
 
 Turn it on: ChatGPT > Apps > Indeed > Connect, then type @Indeed and what you want. Before you apply to one, ask:
