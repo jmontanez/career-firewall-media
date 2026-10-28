@@ -12,6 +12,42 @@ New prompts are added here every time a video goes out. Newest first.
 
 ---
 
+## 34. 100 applications, no callbacks? Check the top third first
+
+Paste your resume, then:
+
+```
+Read only the top third of my resume. In one sentence, what job do I seem to want, and what's my best result? If that's unclear, rewrite it.
+```
+
+Why it works: recruiters skim. If the top doesn't say what you want and what you've done, the rest never gets read.
+
+---
+
+## 33. Will AI replace software engineers? (Interview answer)
+
+Employers surveyed by the World Economic Forum expect software developer jobs to grow by 2030. When an interviewer asks how you use AI, say: "It writes my first draft of code and tests. I spend my time on design, review, and the bugs it misses." Then turn your real work into resume bullets:
+
+```
+Here's what I worked on last month. Split it into tasks AI could draft and decisions only I made. Turn the decisions into 3 resume bullets with numbers. Ask me for any number you need.
+```
+
+Why it works: the decisions are the part of the job that's growing. Put them on your resume.
+
+---
+
+## 32. Job post asks for a skill you don't have? (Tool Drop: Coursera in ChatGPT)
+
+Paste the job post and your resume into ChatGPT, then:
+
+```
+Here's a job post and my resume. Which skills does the job ask for that I'm missing? Rank them by how often the post mentions them.
+```
+
+Then start a new message with the word Coursera, for example: "Coursera, teach me the basics of SQL." It brings Coursera lesson videos into the chat. The full course still happens on Coursera.
+
+---
+
 ## 31. "Why should we hire you if AI can do this job?" (Interview answer)
 
 Say: "AI can draft the work. I decide what's right, catch what it gets wrong, and get people to act on it." Then give one real example. No example ready? Paste the job description and:
