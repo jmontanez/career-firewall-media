@@ -60,3 +60,8 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
 .dl a.btn{justify-content:flex-start}
 @media (prefers-reduced-motion:no-preference){.btn{transition:filter .15s}}
 ul.ticks.no li::before{width:12px;height:3px;border:0;background:var(--muted);transform:none;top:.75em}
+form.waitlist{display:flex;flex-direction:column;gap:12px}
+form.waitlist .row input[type=email]{flex:1 1 220px;min-width:0;font:inherit;font-size:17px;padding:13px 14px;border-radius:8px;border:1px solid var(--line);background:#05080d;color:var(--fg)}
+form.waitlist label.check{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--muted)}
+form.waitlist label.check input{width:18px;height:18px;accent-color:var(--accent)}
+.wl-msg{min-height:1.4em;font-size:15px;color:var(--good)}

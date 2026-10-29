@@ -15,7 +15,7 @@
 <body>
 <header class="top"><div class="wrap">
   <a href="../"><img src="../assets/header.png" alt="The AI Career Firewall"></a>
-  <nav><a href="../">Home</a><a href="#inside">Inside</a><a href="#faq">FAQ</a></nav>
+  <nav><a href="../">Home</a><a href="#inside">Inside</a><a href="#pro">Pro</a><a href="#faq">FAQ</a></nav>
 </div></header>
 
 <main>
@@ -85,6 +85,20 @@
   </ul>
 </div></section>
 
+<section id="pro"><div class="wrap stack">
+  <span class="eyebrow">Coming next</span>
+  <h2>Interview Firewall Pro</h2>
+  <p>A practice app built on this kit. Paste the job post and your resume, answer out loud by voice, get each answer scored, and watch your weakest answers get stronger across sessions. Waitlist members get first access and a founding price.</p>
+  <form class="waitlist" data-source="interview-page">
+    <div class="row">
+      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email">
+      <button class="btn" type="submit">Join the Pro waitlist</button>
+    </div>
+    <label class="check"><input type="checkbox" name="soon"> I have an interview in the next 30 days</label>
+    <p class="wl-msg" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+
 <section id="faq"><div class="wrap stack">
   <h2>Questions</h2>
   <div class="faq">
@@ -118,5 +132,6 @@ document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener(
   if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
 })});
 </script>
+<script src="../waitlist.js"></script>
 </body>
 </html>
