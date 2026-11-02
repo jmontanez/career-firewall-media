@@ -22,4 +22,22 @@
       .finally(function(){btn.disabled=false;});
     });
   });
+  // Free audit requests -> cf_audit_requests (insert-only).
+  document.querySelectorAll('form.audit').forEach(function(f){
+    var msg=f.querySelector('.wl-msg'), btn=f.querySelector('button');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      btn.disabled=true; msg.textContent='Sending...';
+      var v=function(n){var x=f.elements[n].value.trim();return x||null;};
+      fetch(URL.replace('cf_waitlist','cf_audit_requests'),{method:'POST',headers:{'apikey':KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+        body:JSON.stringify({email:v('email'),profile_link:v('profile_link'),target_role:v('target_role'),worry:v('worry'),source:f.dataset.source})})
+      .then(function(r){
+        if(r.ok||r.status===409){f.reset();msg.textContent="Got it. I'll email you within 48 hours.";}
+        else if(r.status===400){msg.textContent='Something looks off. Check your email and try again.';}
+        else{msg.textContent="Something went wrong. Email theaicareerfirewall@gmail.com and I'll add you.";}
+      })
+      .catch(function(){msg.textContent="Something went wrong. Email theaicareerfirewall@gmail.com and I'll add you.";})
+      .finally(function(){btn.disabled=false;});
+    });
+  });
 })();
