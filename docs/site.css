@@ -65,3 +65,6 @@ form.waitlist .row input[type=email]{flex:1 1 220px;min-width:0;font:inherit;fon
 form.waitlist label.check{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--muted)}
 form.waitlist label.check input{width:18px;height:18px;accent-color:var(--accent)}
 .wl-msg{min-height:1.4em;font-size:15px;color:var(--good)}
+form.audit{display:flex;flex-direction:column;gap:12px}
+form.audit input,form.audit textarea{font:inherit;font-size:17px;padding:13px 14px;border-radius:8px;border:1px solid var(--line);background:#05080d;color:var(--fg);width:100%}
+form.audit .btn{align-self:flex-start}
