@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free interview kit · The AI Career Firewall</title>
+<meta name="description" content="Free: the AI mock interview prompt from my videos, plus 5 answers to the questions experienced people dread.">
+<meta property="og:title" content="Free: the AI interview prompt + 5 answers">
+<meta property="og:image" content="https://aicareerfirewall.com/assets/header.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a href="../"><img src="../assets/header.png" alt="The AI Career Firewall"></a>
+  <nav><a href="../">Home</a><a href="../interview/">Interview Firewall</a></nav>
+</div></header>
+
+<main>
+<section><div class="wrap stack">
+  <span class="eyebrow">Free</span>
+  <h1>The AI interview prompt from my videos, plus 5 answers.</h1>
+  <p class="lead">Paste one prompt into ChatGPT, Claude or Gemini and it runs a 3-question mock interview from the real job post, scores you, and rewrites your answers. Plus ready answers for the layoff, gap, AI and salary questions.</p>
+  <form class="waitlist" data-source="free-page" data-product="free-kit" data-reveal="kit">
+    <div class="row">
+      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email">
+      <button class="btn" type="submit">Send me the free kit</button>
+    </div>
+    <label class="check"><input type="checkbox" name="soon"> I have an interview in the next 30 days</label>
+    <p class="wl-msg" role="status" aria-live="polite"></p>
+  </form>
+  <p class="fine">It opens right here. I'll also email you new prompts now and then. Unsubscribe anytime.</p>
+</div></section>
+
+<section id="kit" hidden><div class="wrap stack">
+  <h2>1. The quick mock interview prompt</h2>
+  <div class="code"><div class="bar">Paste into any AI chat<button class="copy" type="button" data-copy="mock">Copy</button></div>
+<pre id="mock">You are my interview coach. I&#x27;m an experienced professional with a real interview coming up.
+
+1. Ask me to paste the job post. Wait for it.
+2. From it, pick the 3 questions I&#x27;m most likely to get, including one about why I&#x27;m leaving or a gap.
+3. Ask them one at a time. After each answer, score it out of 10, tell me the one fix that matters most, and rewrite it in my own words. Never invent numbers or results; ask me for them.
+4. At the end, tell me which answer to practice most.
+
+Start with step 1.</pre></div>
+  <h2>2. Five answers, fill in the brackets</h2>
+  <div class="code"><div class="bar">Why were you the one let go?<button class="copy" type="button" data-copy="a0">Copy</button></div>
+<pre id="a0">I don&#x27;t know the full criteria, and I won&#x27;t guess. What I do know is what I delivered: [result]. My manager there, [title], is one of my references and can speak to it.</pre></div>
+<p class="fine">Why it works: Calm and short. Handing them a reference ends the topic.</p><div class="code"><div class="bar">Tell me about this gap.<button class="copy" type="button" data-copy="a1">Copy</button></div>
+<pre id="a1">After my role was cut in [month], I took [time] to [search carefully + one concrete thing: a course, certification, project, freelance work or family]. I finished [result]. I&#x27;m ready to be back full time, and I&#x27;ve been choosy about fit rather than taking the first offer.</pre></div>
+<p class="fine">Why it works: No apology. One sentence on why, one on what you did, one on being ready.</p><div class="code"><div class="bar">Tell me about yourself.<button class="copy" type="button" data-copy="a2">Copy</button></div>
+<pre id="a2">I&#x27;m a [title] with [X] years in [field]. Most recently I [best result with a number]. Before that, [one earlier proof]. Now I&#x27;m looking for [what this role offers], which is why I applied here.</pre></div>
+<p class="fine">Why it works: Present, past proof, future. Under 90 seconds. Skip your childhood and first job.</p><div class="code"><div class="bar">Do you have AI experience?<button class="copy" type="button" data-copy="a3">Copy</button></div>
+<pre id="a3">Yes. I use AI every week for [task], and it saves me about [time]. I still check every output, because [risk in your field].</pre></div>
+<p class="fine">Why it works: Not true yet? Use the mock-interviewer prompt on your own job description and do one real task this week.</p><div class="code"><div class="bar">Tell me about a time you failed.<button class="copy" type="button" data-copy="a4">Copy</button></div>
+<pre id="a4">Situation: [one sentence]. My part: [what you owned]. What I did: [2-3 actions, including what you changed after]. Result: [what happened next, with a number if you have one].</pre></div>
+<p class="fine">Why it works: Pick a real failure from a few years ago that you fixed. The fix is the point.</p>
+  <div class="card feature">
+    <h3>Want the full version?</h3>
+    <p>Interview Firewall picks 8 questions, adds follow-ups, grades every answer, and comes with 40 answers, a recruiter-call script and a night-before checklist. $29 once.</p>
+    <a class="btn" href="../interview/">See Interview Firewall</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>The AI Career Firewall · Contact: theaicareerfirewall@gmail.com</span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+  var t=document.getElementById(b.dataset.copy).textContent;
+  var ok=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+})});
+</script>
+<script src="../waitlist.js"></script>
+<script src="../stats.js"></script>
+</body>
+</html>
