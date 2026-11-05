@@ -12,6 +12,7 @@
         body:JSON.stringify({email:email,product:f.dataset.product||'interview-pro',source:f.dataset.source,interviewing_soon:soon?soon.checked:null})})
       .then(function(r){
         if(r.ok||r.status===409){f.reset();
+          if(f.dataset.next){msg.textContent='Opening your kit...';location.href=f.dataset.next;return;}
           var kit=f.dataset.reveal&&document.getElementById(f.dataset.reveal);
           if(kit){kit.hidden=false;msg.textContent="Here it is. Scroll down.";kit.scrollIntoView({behavior:'smooth'});}
           else msg.textContent="You're on the list. I'll email you first when Pro opens.";}
@@ -22,6 +23,8 @@
       .finally(function(){btn.disabled=false;});
     });
   });
+  // Arriving from the home-page signup (free/?kit=1): show the kit right away.
+  if(/[?&]kit=1/.test(location.search)){var k=document.getElementById('kit');if(k){k.hidden=false;k.scrollIntoView();}}
   // Free audit requests -> cf_audit_requests (insert-only).
   document.querySelectorAll('form.audit').forEach(function(f){
     var msg=f.querySelector('.wl-msg'), btn=f.querySelector('button');
