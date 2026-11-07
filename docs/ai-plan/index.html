@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanguard Check: free AI readiness scorecard for your business</title>
+<meta name="description" content="Answer 12 questions and see if your business is in the 12% that actually profits from AI. Free score, plus a plan built for your gaps.">
+<meta property="og:title" content="Vanguard Check: is your business in the 12% that profits from AI?">
+<meta property="og:description" content="A free 4-minute AI readiness scorecard for small and mid-sized businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14171f;--muted:#5d6472;--line:#e3e1da;--bg:#f7f5ef;--card:#fff;--accent:#d4572a;--accent2:#1f6f5c}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+.wrap{max-width:780px;margin:0 auto;padding:28px 20px 60px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(34px,7vw,54px);line-height:1.05;font-weight:800}
+h2{font-size:26px;font-weight:600}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);margin:16px 0 24px}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--ink);color:#fff;font:600 16px Inter,sans-serif;padding:14px 26px;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.sm{font-size:14px;padding:9px 16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-family:Fraunces,serif;font-size:30px;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+.src{font-size:12px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+label{display:block;font-size:14px;font-weight:600;margin:14px 0 6px}
+input,select{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);font:15px Inter,sans-serif;color:var(--ink)}
+.progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 22px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.qmeta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.q{font-size:20px;font-weight:600;margin:6px 0 18px}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;font:500 15px Inter,sans-serif;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{border-color:var(--accent);background:#fbeee8}
+.nav{display:flex;justify-content:space-between;margin-top:16px}
+.hidden{display:none!important}
+.brand{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:26px}
+.brand a{color:var(--muted);text-decoration:none}
+.brand b{font-family:Fraunces,serif;font-size:16px}
+.capture{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.capture input{flex:1;min-width:200px;background:var(--card)}
+.upsell input{background:#1e222c;border-color:#3a3f4b;color:#fff;flex:1;min-width:200px}
+.msg{font-size:14px;margin-top:8px}
+.score{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ring{width:150px;height:150px;flex:none}
+.tier{font-family:Fraunces,serif;font-size:28px;font-weight:800}
+.delta{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:#e4f2ec;color:var(--accent2)}
+.pillars{display:grid;gap:12px;margin:20px 0}
+.pill{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:14px}
+.bar{height:10px;background:var(--line);border-radius:10px;overflow:hidden}
+.bar i{display:block;height:100%}
+.teaser li{margin-bottom:8px}
+.locked{position:relative;margin-top:18px;border:1px dashed var(--line);border-radius:14px;padding:16px 16px 0;max-height:150px;overflow:hidden;color:var(--muted);font-size:14px}
+.locked:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,var(--card) 85%)}
+.upsell{margin-top:26px;background:var(--ink);color:#fff;border-radius:18px;padding:26px}
+.upsell h3{font-size:22px;margin-bottom:6px}
+.upsell p{color:#c9ccd3;margin:0 0 16px}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.tierbox{border:1px solid #3a3f4b;border-radius:12px;padding:14px;display:flex;flex-direction:column}
+.tierbox b{font-family:Fraunces,serif;font-size:24px}
+.tierbox ul{padding-left:18px;margin:8px 0 14px;font-size:13px;color:#c9ccd3;flex:1}
+.tierbox .btn{background:var(--accent);text-align:center}
+.tierbox .btn:hover{background:#fff;color:var(--ink)}
+.notice{background:#262b36;border-radius:12px;padding:14px;font-size:14px;color:#dfe2e8;margin-top:6px}
+.notice .btn{margin-top:10px}
+/* report */
+.rbar{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:18px}
+.rbar .src{margin-left:auto}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px}
+.toc a{font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px;text-decoration:none}
+.doc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px}
+.doc h1{font-size:34px;margin-bottom:6px}
+.doc h2{font-size:24px;margin:34px 0 10px;padding-top:18px;border-top:2px solid var(--ink)}
+.doc h3{font-size:18px;margin:22px 0 6px}
+.doc p{margin:8px 0}
+.doc ul,.doc ol{padding-left:22px;margin:8px 0}
+.doc li{margin-bottom:6px}
+.doc blockquote{margin:12px 0;padding:10px 16px;border-left:4px solid var(--accent);background:#fbeee8;border-radius:0 10px 10px 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+footer{margin-top:40px;font-size:12px;color:var(--muted)}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.pill{grid-template-columns:110px 1fr 38px}.price{grid-template-columns:1fr}.doc{padding:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="brand"><b>Vanguard Check</b><a href="../">by The AI Career Firewall</a></div>
+
+<section id="intro">
+  <div class="eyebrow">Vanguard Check · free 4-minute scorecard</div>
+  <h1>Is your business in the 12% that actually profits from AI?</h1>
+  <p class="lede">Most companies run AI pilots that never pay off. Answer 12 questions and get your score across the four foundations that separate the winners, plus a plan built for your gaps.</p>
+  <button class="btn" onclick="show('about')">Start my scorecard →</button>
+  <p class="src" style="margin-top:12px">Not the owner? Take it for your company anyway. Walking in with an AI plan is the fastest way to become the person your company can't afford to lose.</p>
+  <div class="stats">
+    <div class="stat"><b>56%</b><span>of CEOs saw neither more revenue nor lower costs from AI</span></div>
+    <div class="stat"><b>12%</b><span>got both. PwC calls them the "AI vanguard"</span></div>
+    <div class="stat"><b>44% vs 17%</b><span>of vanguard firms put AI into their products, vs everyone else</span></div>
+  </div>
+  <p class="src">Source: PwC 29th Global CEO Survey (4,454 CEOs, 95 countries, January 2026). Vanguard Check is independent and not affiliated with PwC.</p>
+</section>
+
+<section id="about" class="hidden">
+  <div class="card">
+    <div class="eyebrow">Step 1 of 2 · about you</div>
+    <h2 style="margin-top:6px">So we can tailor your plan</h2>
+    <form onsubmit="saveAbout(event)">
+      <label for="co">Company name</label><input id="co" required maxlength="60" placeholder="Acme Plumbing">
+      <label for="ind">Industry</label><select id="ind"></select>
+      <label for="role">Your role</label>
+      <select id="role"><option>Owner or executive</option><option>Manager</option><option>Employee</option></select>
+      <label for="size">Team size</label>
+      <select id="size"><option>1–10</option><option>11–50</option><option>51–200</option><option>201–1,000</option><option>1,000+</option></select>
+      <div class="nav"><button type="button" class="btn ghost" onclick="show('intro')">← Back</button><button class="btn">Continue →</button></div>
+    </form>
+  </div>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="card">
+    <div class="qmeta"><span id="pillarName"></span><span id="count"></span></div>
+    <div class="progress"><i id="prog"></i></div>
+    <div class="q" id="qtext"></div>
+    <div id="opts"></div>
+    <div class="nav">
+      <button class="btn ghost" onclick="back()">← Back</button>
+      <button class="btn" id="next" onclick="next()">Next →</button>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="hidden">
+  <div class="eyebrow" id="resEyebrow">Your result</div>
+  <div class="score" style="margin:10px 0 6px">
+    <svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#e3e1da" stroke-width="12"/><circle id="arc" cx="60" cy="60" r="50" fill="none" stroke="#d4572a" stroke-width="12" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s"/><text id="scoreNum" x="60" y="68" text-anchor="middle" font-family="Fraunces,serif" font-size="30" font-weight="800">0</text></svg>
+    <div><div class="tier" id="tier"></div><p id="tierDesc" style="color:var(--muted);margin:6px 0 0;max-width:420px"></p><span id="delta" class="delta hidden"></span></div>
+  </div>
+  <div class="card">
+    <h2>Your four foundations</h2>
+    <div class="pillars" id="pillars"></div>
+    <h2 style="margin-top:8px">Start here</h2>
+    <ol class="teaser" id="teaser"></ol>
+    <div class="locked" id="lockedPreview"></div>
+    <form class="capture" onsubmit="emailScore(event)"><input type="email" id="leadEmail" required placeholder="you@company.com" aria-label="Email"><button class="btn sm">Email me my score</button></form>
+    <p class="msg src" id="leadMsg" role="status"></p>
+  </div>
+  <div class="upsell" id="upsell">
+    <h3>Get your full Vanguard Report</h3>
+    <p>A detailed report built from your answers: findings on every question, a week-by-week 12-week roadmap, a KPI tracker, tools matched to your gaps, a ready-to-sign Responsible AI Policy and a team survey.</p>
+    <div class="price">
+      <div class="tierbox"><b>$49</b><span class="src" style="color:#9aa0ab">one-time</span><ul><li>Full personalized report</li><li>Responsible AI Policy, pre-filled</li><li>Tools matched to your gaps</li><li>12-week roadmap + KPI tracker</li></ul><button class="btn sm" onclick="checkout('report')">Get my report</button></div>
+      <div class="tierbox"><b>$299</b><span class="src" style="color:#9aa0ab">per quarter</span><ul><li>Everything in the report</li><li>60-minute strategy call</li><li>Team pulse survey + quarterly re-score</li><li>Progress tracked against your baseline</li></ul><button class="btn sm" onclick="checkout('advisory')">Start advisory</button></div>
+    </div>
+    <div id="checkoutMsg" class="notice hidden"></div>
+  </div>
+  <p style="margin-top:20px"><button class="btn ghost" onclick="restart()">Retake</button></p>
+</section>
+
+<section id="report" class="hidden">
+  <div class="rbar">
+    <button class="btn sm ghost" onclick="show('result')">← Score</button>
+    <button class="btn sm" onclick="copyText(reportMd,this)">Copy full report</button>
+    <button class="btn sm ghost" onclick="copyText(policyMd,this)">Copy policy only</button>
+    <span class="src">Paste into Google Docs or Word to edit, print or share.</span>
+  </div>
+  <div class="toc" id="toc"></div>
+  <article class="doc" id="doc"></article>
+</section>
+
+<footer>Vanguard Check by <a href="../">The AI Career Firewall</a> · Contact: theaicareerfirewall@gmail.com<br>Benchmarks from PwC's 2026 Global CEO Survey. Scoring is directional, not a formal audit. Tool names are examples; check current plans and pricing.</footer>
+</div>
+
+<script>
+// ===== CONFIG: paste Stripe Payment Links here to go live. Set each link's success URL to this page's URL + #paid =====
+const STRIPE = { report: "", advisory: "" };
+
+const P={
+ tech:{name:"Tech & data",color:"#d4572a"},
+ road:{name:"AI roadmap",color:"#1f6f5c"},
+ risk:{name:"Responsible AI",color:"#c99a1c"},
+ culture:{name:"Adoption culture",color:"#4b5bd6"}
+};
+const IND={
+ "Professional services":["AI first drafts of proposals and client reports from your own templates","Meeting notes turned into client follow-up emails automatically","Q&A assistant over your past projects and know-how"],
+ "Retail & e-commerce":["AI-written product descriptions and SEO pages","24/7 assistant for order, return and shipping questions","Demand forecasting from your sales history"],
+ "Healthcare":["Appointment reminders and intake-form summaries (no clinical decisions; use HIPAA-eligible tools)","Billing and prior-authorization paperwork drafts","Patient FAQ assistant, reviewed by staff"],
+ "Construction & trades":["Faster quotes and estimates from job photos and notes","Automated scheduling and customer status updates","Safety and compliance document drafts"],
+ "Manufacturing":["Predictive maintenance alerts from machine data","Quality reports and defect-trend summaries","Supplier and tariff-exposure monitoring"],
+ "Financial services":["Client report and meeting-prep drafts","Document intake and data extraction","Monitoring client communications for compliance"],
+ "Hospitality":["Review responses and guest messaging","Menu or rate suggestions from demand patterns","Staff scheduling from forecast traffic"],
+ "Real estate":["Listing descriptions and marketing from photos","Lead follow-up and nurture sequences","Market comparison summaries for clients"],
+ "Nonprofit":["Grant application first drafts","Personalized donor thank-yous and updates at scale","Impact reports from program data"],
+ "Other":["Triage of customer emails and inquiries","First drafts of recurring documents","Weekly reporting from your business data"]
+};
+const Q=[
+ {p:"tech",q:"Where does your core business data live?",o:["Spreadsheets and inboxes","A few apps that don't talk to each other","Mostly connected systems, some manual exports","One integrated stack with clean, accessible data"],
+  low:"Your data is scattered across spreadsheets, inboxes or disconnected apps, so any AI tool will only ever see fragments of your business.",
+  mid:"Most systems connect, but manual exports still sit between your data and any AI tool.",
+  high:"Your data is integrated and accessible, which is the biggest technical prerequisite for AI that pays off.",
+  fix:"Choose one system of record for customers and sales, and retire the side spreadsheets that duplicate it."},
+ {p:"tech",q:"Can you plug an AI tool into your customer or sales data today?",o:["No idea how","Only by copy-pasting","Yes, for one or two systems","Yes, through APIs or connectors we already use"],
+  low:"AI can only reach your data by copy-paste. That limits it to one-off tasks and pushes data into personal tools.",
+  mid:"Some systems are connected. Extend that to the ones that drive revenue.",
+  high:"Your AI tools can reach live business data, so you can automate whole workflows instead of single tasks.",
+  fix:"Connect your CRM or main business app to your AI workspace with its built-in connector or an automation tool."},
+ {p:"tech",q:"How do you handle AI tool access and accounts?",o:["Everyone uses personal free accounts","A few paid seats, no oversight","Company accounts for most tools","Managed company accounts with data controls"],
+  low:"Staff use personal or unmanaged AI accounts. You can't see what business data is being shared, or where it goes.",
+  mid:"Company accounts exist. Add admin controls and turn off training on your data.",
+  high:"Managed accounts with data controls give you visibility and protect client data.",
+  fix:"Move everyone to company-managed AI accounts with training on your data turned off and admin visibility on."},
+ {p:"road",q:"Do you have a written plan for where AI fits in the business?",o:["No","Ideas in someone's head","A list of pilots","A prioritized roadmap tied to revenue or cost goals"],
+  low:"There's no written AI plan. PwC names a clear roadmap as one of the foundations behind companies that profit from AI.",
+  mid:"You have pilots, but no ranking by business value, so effort spreads thin.",
+  high:"A prioritized roadmap tied to financial goals puts you in step with PwC's vanguard.",
+  fix:"Write a one-page AI roadmap: three use cases, each with an owner, a metric and a 90-day target."},
+ {p:"road",q:"Where are you using AI right now?",o:["Nowhere yet","Individual tasks like writing emails","Inside one business process (support, marketing…)","In the product or service customers pay for"],
+  low:"AI use is limited to individual tasks, or none. That saves minutes, not money.",
+  mid:"AI sits inside one process. Vanguard firms go further: 44% put AI into products and services, vs 17% of other companies.",
+  high:"You use AI in what customers pay for, the move PwC most associates with its vanguard.",
+  fix:"Pick one way AI improves what customers buy (faster delivery, more personal service, a new offer) and pilot it."},
+ {p:"road",q:"How do you measure whether AI is paying off?",o:["We don't","Gut feel","We track time saved","We track revenue and cost impact per use case"],
+  low:"Without measurement you can't tell a winning pilot from a costly one. That's how 56% of companies end up with no measurable gain.",
+  mid:"Time saved is a start, but it doesn't reach the P&L until it's tied to revenue or cost.",
+  high:"You track financial impact per use case, so you can double down on what works.",
+  fix:"For each use case, track one revenue or cost number monthly, not just hours saved."},
+ {p:"risk",q:"Do you have a policy on what staff can put into AI tools?",o:["No","An informal 'be careful'","A written policy","A policy plus training and enforcement"],
+  low:"Without a written policy, staff are guessing what's safe to paste into AI tools.",
+  mid:"A policy exists, but without training and enforcement it won't change behavior.",
+  high:"Policy, training and enforcement together form the governance PwC links to stronger AI returns.",
+  fix:"Adopt the Responsible AI Policy in this report, walk the team through it in 30 minutes, and get sign-off."},
+ {p:"risk",q:"Who checks AI output before it reaches customers?",o:["Nobody specifically","Whoever made it, sometimes","A defined review step for key outputs","Review steps plus logging and spot audits"],
+  low:"AI output reaches customers without a defined check, which is a trust and liability risk.",
+  mid:"Key outputs are reviewed. Add logging so you can trace problems.",
+  high:"Review, logging and audits protect customer trust as you scale AI.",
+  fix:"Decide which outputs need human review (anything customer-facing, legal or financial) and who signs off."},
+ {p:"risk",q:"How prepared are you for AI-related security threats (phishing, data leaks)?",o:["Not at all","Basic antivirus and passwords","MFA and staff awareness training","Formal security program that covers AI risks"],
+  low:"Your defenses are basic. PwC found 31% of CEOs now see high exposure to cyber losses, up from 24% a year earlier.",
+  mid:"MFA and training cover the basics. Add AI-specific scenarios and a response plan.",
+  high:"A formal program that covers AI risks puts you ahead of most peers.",
+  fix:"Turn on MFA everywhere, run an AI-phishing awareness session, and write a one-page incident plan."},
+ {p:"culture",q:"How often does your team use generative AI?",o:["Rarely or never","A few people, occasionally","Most people weekly","Most people daily"],
+  low:"AI use is rare. Worldwide only 14% of workers use generative AI daily, and the companies seeing returns are closing that gap.",
+  mid:"Weekly use is good. Daily habits are where gains compound.",
+  high:"Daily use across the team puts you well ahead of the 14% global norm.",
+  fix:"Give each role two ready-made prompts or workflows for its most repetitive weekly task."},
+ {p:"culture",q:"How does your team feel about AI changing their work?",o:["Worried or resistant","Mixed, mostly unspoken","Curious, some champions","Openly experimenting, wins are shared"],
+  low:"Your team is worried or quiet about AI. PwC found more than a quarter of employees worry about AI's impact on their work, and that silence stalls adoption.",
+  mid:"There's curiosity. Make wins visible so it spreads.",
+  high:"Open experimentation and shared wins are the culture PwC's vanguard builds on purpose.",
+  fix:"Name two AI champions and run a 20-minute weekly show-and-tell of what worked."},
+ {p:"culture",q:"What happens to an AI experiment that isn't working?",o:["We never start them","They drag on quietly","We stop them eventually","We have a set checkpoint to kill or scale"],
+  low:"Experiments either never start or drag on. PwC warns this kind of 'innovation theatre' burns budget without results.",
+  mid:"You stop failures eventually. A fixed checkpoint frees budget sooner.",
+  high:"Clear kill-or-scale checkpoints keep money flowing to what works.",
+  fix:"Put a 30-day checkpoint on every experiment: scale it, fix it, or stop it."}
+];
+const ACT={
+ tech:["List every system holding customer, sales and operations data, and name one system of record.","Move all staff onto company-managed AI accounts with data controls on.","Connect your system of record to your AI workspace (native connector, Zapier or Make).","Clean up the three data fields AI needs most (for example customer status, deal value, product)."],
+ road:["Draft a one-page AI roadmap: three use cases, each with an owner, a metric and a 90-day target.","Launch use case #1: {UC0}.","Start a monthly 30-minute AI review where each use case reports its number.","Pilot one AI improvement inside what customers pay for: {UC1}."],
+ risk:["Adopt and sign the Responsible AI Policy in this report.","Turn on MFA for every account and run a 30-minute AI-phishing session.","Set human-review rules for customer-facing, legal and financial AI output.","Write a one-page AI incident plan: who to call, what to switch off, who to notify."],
+ culture:["Name two AI champions and start a weekly 20-minute show-and-tell.","Give each role two ready-made prompts for its most repetitive task.","Run the Team Pulse Survey in this report to set a baseline.","Set 30-day kill-or-scale checkpoints on every experiment."]
+};
+const TOOLS={
+ tech:["**AI workspace with admin controls:** ChatGPT Business or Enterprise, Claude Team or Enterprise, Microsoft 365 Copilot, Gemini for Google Workspace","**Connecting apps and automating workflows:** Zapier, Make, n8n","**One system of record:** HubSpot, Salesforce, Airtable, or the CRM already built into your industry software"],
+ road:["**Tracking your use cases:** Notion, Asana, Trello, or one shared spreadsheet","**Measuring payback:** a Google Sheets or Excel tracker (use the KPI section of this report), then Looker Studio or Power BI as you grow"],
+ risk:["**Passwords and MFA:** 1Password, Bitwarden, Microsoft or Google Authenticator","**Phishing awareness training:** KnowBe4, Hoxhunt, or your email provider's built-in training","**Device management:** Microsoft Intune, Jamf (for Apple devices)"],
+ culture:["**A shared prompt library:** one Notion or Google Docs page, Custom GPTs, or Claude Projects","**Free and low-cost training:** Google AI Essentials, LinkedIn Learning, and the AI vendors' own academies"]
+};
+const SURVEY=["I know which AI tools I'm allowed to use at work.","I know what information I must never put into an AI tool.","I use AI at least weekly to do my job.","AI has saved me meaningful time in the last month.","I know who to ask when I have an AI question.","I feel AI will make my job better, not threaten it.","I've seen a colleague share an AI win in the last month.","I know what to do if I suspect an AI-related mistake or security issue."];
+const KPI={
+ tech:["Share of staff on managed AI accounts (target: 100%)","Key systems connected to your AI tools (target: your top 2)"],
+ road:["Use cases live with an owner and a metric (target: 3)","Monthly revenue added or cost saved from AI (target: set per use case)"],
+ risk:["Staff who signed the AI policy (target: 100%)","Accounts with MFA enabled (target: 100%)"],
+ culture:["Staff using AI weekly (target: 75%+)","Team Pulse Survey average score (target: up 0.5 points per quarter)"]
+};
+
+let i=0,ans=Array(Q.length).fill(null),about={},res=null,reportMd="",policyMd="";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+$("ind").innerHTML=Object.keys(IND).map(k=>"<option>"+k+"</option>").join("");
+function show(id){["intro","about","quiz","result","report"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo(0,0)}
+function saveAbout(e){e.preventDefault();about={co:$("co").value.trim(),ind:$("ind").value,size:$("size").value,role:$("role").value};i=0;show("quiz");render()}
+function render(){
+ const x=Q[i];
+ $("pillarName").textContent="Step 2 of 2 · "+P[x.p].name;$("count").textContent=(i+1)+" / "+Q.length;
+ $("prog").style.width=(i/Q.length*100)+"%";$("qtext").textContent=x.q;
+ $("opts").innerHTML="";
+ x.o.forEach((t,k)=>{const b=document.createElement("button");b.className="opt"+(ans[i]===k?" sel":"");b.textContent=t;b.onclick=()=>{ans[i]=k;render();setTimeout(next,180)};$("opts").appendChild(b)});
+ $("next").textContent=i===Q.length-1?"See my score →":"Next →";
+}
+function next(){if(ans[i]===null)return;if(i<Q.length-1){i++;render()}else results()}
+function back(){if(i>0){i--;render()}else show("about")}
+
+function compute(){
+ const s={};Object.keys(P).forEach(k=>s[k]=[]);
+ Q.forEach((q,k)=>s[q.p].push(ans[k]));
+ const pct={};Object.keys(s).forEach(k=>pct[k]=Math.round(s[k].reduce((a,b)=>a+b,0)/(s[k].length*3)*100));
+ const total=Math.round(Object.values(pct).reduce((a,b)=>a+b,0)/4);
+ const order=Object.keys(pct).sort((a,b)=>pct[a]-pct[b]);
+ let tier,desc;
+ if(total>=80){tier="AI Vanguard";desc="You look like the 12% of companies PwC found getting both revenue and cost gains from AI. Now scale what works."}
+ else if(total>=55){tier="Builder";desc="You have real foundations, but gaps are capping your returns. Close the weakest pillar first."}
+ else if(total>=30){tier="Experimenter";desc="Like most companies, you're trying AI without the foundations that make it pay. That's fixable in a quarter."}
+ else{tier="Starting line";desc="You're early, which also means no bad habits to undo. Start with the plan below."}
+ return {pct,total,order,tier,desc,date:new Date().toISOString().slice(0,10)};
+}
+function results(){
+ const prev=store.get("vc_last");
+ res=compute();
+ show("result");
+ $("resEyebrow").textContent=about.co+" · your result";
+ $("arc").style.strokeDashoffset=314-314*res.total/100;
+ let n=0;const t=setInterval(()=>{n=Math.min(res.total,n+2);$("scoreNum").textContent=n;if(n>=res.total)clearInterval(t)},20);
+ $("tier").textContent=res.tier;$("tierDesc").textContent=res.desc;
+ if(prev&&prev.co===about.co){const d=res.total-prev.total;$("delta").textContent=(d>=0?"▲ +":"▼ ")+d+" since "+prev.date;$("delta").classList.remove("hidden")}else $("delta").classList.add("hidden");
+ store.set("vc_last",{co:about.co,total:res.total,pct:res.pct,date:res.date});
+ $("pillars").innerHTML=Object.keys(P).map(k=>'<div class="pill"><span>'+P[k].name+'</span><div class="bar"><i style="width:'+res.pct[k]+'%;background:'+P[k].color+'"></i></div><b>'+res.pct[k]+'</b></div>').join("");
+ $("teaser").innerHTML=[ACT[res.order[0]][0],ACT[res.order[0]][1],ACT[res.order[1]][0]].map(x=>"<li>"+esc(fill(x))+"</li>").join("");
+ reportMd=buildReport();policyMd=buildPolicy();
+ $("lockedPreview").innerHTML="<b>Your full report includes:</b> executive summary · how you compare to PwC's benchmarks · findings on all 12 answers · a 12-week roadmap · KPI tracker · "+(about.ind)+" use cases · tool shortlist · Responsible AI Policy for "+esc(about.co)+" · Team Pulse Survey…";
+ $("checkoutMsg").classList.add("hidden");
+ }
+function fill(s){const uc=IND[about.ind]||IND.Other;return s.replace("{UC0}",uc[0]).replace("{UC1}",uc[1])}
+
+function checkout(plan){
+ const link=STRIPE[plan];
+ store.set("vc_pending",{ans,about});
+ if(link){location.href=link;return}
+ const m=$("checkoutMsg");m.classList.remove("hidden");
+ m.innerHTML="<b>Launching soon.</b> Leave your email and you'll get a founding price when the "+(plan==="report"?"report":"advisory plan")+" opens."+
+  "<form class='capture' onsubmit='preorder(event,\""+plan+"\")'><input type='email' required placeholder='you@company.com' aria-label='Email'><button class='btn sm' style='background:var(--accent)'>Notify me</button></form><p class='msg'></p>";
+}
+const SB_URL="https://hixdlykszbcerlccvhkq.supabase.co/rest/v1/cf_waitlist",SB_KEY="sb_publishable_g1BwX7tVmmASdvo28HgCyQ_CZHKMXM6";
+function saveEmail(email,product,msgEl,ok){
+ const src=("ai-plan:"+(res?res.total:"")+":"+(about.role||"")+":"+(about.ind||"")).slice(0,80);
+ msgEl.textContent="Saving...";
+ fetch(SB_URL,{method:"POST",headers:{apikey:SB_KEY,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({email:email,product:product,source:src})})
+  .then(r=>{msgEl.textContent=(r.ok||r.status===409)?ok:(r.status===400?"That email looks off. Try again?":"Something went wrong. Email theaicareerfirewall@gmail.com.")})
+  .catch(()=>{msgEl.textContent="Something went wrong. Email theaicareerfirewall@gmail.com."});
+}
+function preorder(e,plan){e.preventDefault();const f=e.target;saveEmail(f.querySelector("input").value.trim(),"vanguard-"+plan,f.nextElementSibling,"You're on the list. You'll hear from me first.")}
+function emailScore(e){e.preventDefault();saveEmail($("leadEmail").value.trim(),"vanguard-lead",$("leadMsg"),"Saved. I'll send your score and one tip for your weakest area.")}
+function openReport(){
+ show("report");
+ $("doc").innerHTML=md(reportMd);
+ const hs=[...$("doc").querySelectorAll("h2")];
+ hs.forEach((h,k)=>h.id="s"+k);
+ $("toc").innerHTML=hs.map((h,k)=>'<a href="#" onclick="document.getElementById(\'s'+k+'\').scrollIntoView({behavior:\'smooth\'});return false">'+h.textContent.replace(/^\d+\.\s*/,"")+'</a>').join("");
+}
+
+function buildReport(){
+ const r=res,a=about,L=[];
+ const uc=IND[a.ind]||IND.Other;
+ const strongest=r.order[3],weakest=r.order[0];
+ L.push("# Vanguard Report: "+a.co);
+ L.push("AI readiness assessment · "+a.ind+" · team of "+a.size+" · "+r.date);
+ L.push("> **Score: "+r.total+"/100. Tier: "+r.tier+".** "+r.desc);
+ L.push("## 1. Executive summary");
+ L.push(a.co+" scored **"+r.total+" out of 100** across the four foundations PwC's 2026 Global CEO Survey links to companies that get real financial returns from AI. Your strongest foundation is **"+P[strongest].name+"** ("+r.pct[strongest]+"). Your biggest gap is **"+P[weakest].name+"** ("+r.pct[weakest]+"), and closing it is the fastest way to raise your returns.");
+ L.push("### Your three priorities for the next 90 days");
+ L.push("1. "+fill(ACT[weakest][0])+"\n2. "+fill(ACT[weakest][1])+"\n3. "+fill(ACT[r.order[1]][0]));
+ L.push("### Scores by foundation");
+ L.push(Object.keys(P).map(k=>"- **"+P[k].name+":** "+r.pct[k]+"/100 "+bar(r.pct[k])).join("\n"));
+
+ L.push("## 2. How you compare");
+ L.push("PwC surveyed 4,454 CEOs in 95 countries (published January 2026). Key benchmarks:");
+ L.push(["- **56%** of companies saw neither higher revenue nor lower costs from AI in the past year. Only **12%** saw both. PwC calls that group the AI vanguard.","- Vanguard companies build four foundations: a technology environment that supports AI, a clear AI roadmap, formal responsible-AI and risk processes, and a culture that supports adoption. Those are the four pillars scored in this report.","- **44%** of vanguard companies have put AI into their products and services, vs **17%** of other companies.","- Only **14%** of workers use generative AI daily, and more than a quarter worry about its impact on their jobs.","- **31%** of CEOs say their company is highly exposed to cyber losses, up from 24% a year earlier."].join("\n"));
+ L.push("**Where "+a.co+" stands:** "+(r.total>=80?"your answers match the vanguard profile.":r.total>=55?"you're ahead of the typical company, but not yet at vanguard level.":"you're in the same position as most companies: using AI without the foundations that make it pay."));
+
+ L.push("## 3. Findings by foundation");
+ Object.keys(P).forEach(k=>{
+  L.push("### "+P[k].name+": "+r.pct[k]+"/100");
+  Q.forEach((q,j)=>{if(q.p!==k)return;const v=ans[j];
+   L.push("**"+q.q+"**\nYour answer: "+q.o[v]+".");
+   L.push("- **Finding:** "+(v<=1?q.low:v===2?q.mid:q.high)+(v<3?"\n- **Action:** "+q.fix:"\n- **Action:** Keep it up, and write down how you do this so it survives staff changes."));
+  });
+ });
+
+ L.push("## 4. Your 12-week roadmap");
+ L.push("Ordered by your weakest foundations first. Aim for about one action a week, each owned by one named person.");
+ const o=r.order,seq=[[o[0],0],[o[0],1],[o[1],0],[o[0],2],[o[1],1],[o[2],0],[o[0],3],[o[1],2],[o[3],0],[o[2],1],[o[1],3],[o[3],1]];
+ L.push(seq.map((s,k)=>(k+1)+". **Week "+(k+1)+" · "+P[s[0]].name+":** "+fill(ACT[s[0]][s[1]])+" Owner: ______").join("\n"));
+
+ L.push("## 5. AI use cases for "+a.ind);
+ L.push("Start with the use case closest to revenue. For each one, write down the number it should move before you launch it.");
+ L.push(uc.map((u,k)=>(k+1)+". "+u).join("\n"));
+
+ L.push("## 6. KPI tracker");
+ L.push("Record a baseline today and check it again every month. Bring these numbers to your monthly AI review.");
+ L.push(Object.keys(P).map(k=>"- **"+P[k].name+":** "+KPI[k].join("; ")+". Baseline: ____ · Day 90: ____").join("\n"));
+
+ L.push("## 7. Tools matched to your gaps");
+ L.push("Listed for your two weakest foundations first. These are examples, not endorsements. Check each vendor's current plans, pricing and data terms.");
+ [o[0],o[1],o[2],o[3]].forEach((k,idx)=>{L.push("### "+P[k].name+(idx<2?" (priority)":""));L.push(TOOLS[k].map(t=>"- "+t).join("\n"))});
+
+ L.push("## 8. Responsible AI Policy");
+ L.push("Ready to adopt. Replace the blanks, have each staff member sign it, and review it every six months.");
+ L.push(policyBody());
+
+ L.push("## 9. Team Pulse Survey");
+ L.push("Send this anonymously to everyone now, and again on day 90. Each statement is scored 1 (strongly disagree) to 5 (strongly agree). Any statement averaging under 3 points to your next action.");
+ L.push(SURVEY.map((s,k)=>(k+1)+". "+s).join("\n"));
+
+ if(a.role&&a.role!=="Owner or executive"){
+  L.push("## Bringing this to your leadership");
+  L.push("You took this as a "+a.role.toLowerCase()+", which puts you in a strong position: most companies have no one who owns AI yet. Here's how to raise it.");
+  L.push("1. Ask for 15 minutes, framed around money: \"I've put together a short assessment of where we could save time and money with AI. Can I walk you through it?\"\n2. Lead with the benchmark: most companies have seen no financial gain from AI, and the few that have built four specific foundations.\n3. Show the three priorities from section 1 and offer to own the first one yourself.\n4. Ask for one decision only: approval to run week 1 of the roadmap.\n5. Report back in 30 days with the number from your KPI tracker.");
+ }
+ L.push("## 10. Next steps");
+ L.push("1. Assign an owner to each roadmap week by Friday.\n2. Adopt the policy in section 8 within 14 days.\n3. Retake Vanguard Check on day 90. Use the same company name and your score change will be shown automatically.");
+ L.push("---\nVanguard Check is independent and not affiliated with PwC. Benchmarks: PwC 29th Global CEO Survey, January 2026. This report is guidance, not legal or security advice.");
+ return L.join("\n\n");
+}
+function bar(p){const n=Math.round(p/10);return "▰".repeat(n)+"▱".repeat(10-n)}
+function policyBody(){
+ const c=about.co;
+ return ["### "+c+" Responsible AI Policy",
+ "**Effective date:** ________ · **AI owner:** ________ · **Next review:** ________",
+ "**1. Purpose.** This policy explains how "+c+" staff may use artificial intelligence tools safely, legally and in a way that keeps customers' trust.",
+ "**2. Scope.** It applies to all employees, contractors and anyone using AI tools on "+c+" work or with "+c+" data.",
+ "**3. Approved tools.** Use only AI tools on the approved list kept by the AI owner, through company-managed accounts. Personal AI accounts may not be used for "+c+" work. To request a new tool, ask the AI owner.",
+ "**4. Data you must never enter into an AI tool** (unless the tool is approved for that data type in writing):\n- Customer or employee personal information (names with contact details, ID numbers, health or financial details)\n- Passwords, access keys or security information\n- Confidential contracts, pricing or financial results that haven't been made public\n- Anything a client has asked us to keep confidential",
+ "**5. Human review.** A person must review AI output before it is sent to a customer, published, or used for legal, financial, hiring or safety decisions. The reviewer is responsible for the final result, not the tool.",
+ "**6. Accuracy.** AI can be confidently wrong. Check facts, figures, quotes and citations against a reliable source before relying on them.",
+ "**7. Transparency.** Do not present AI-generated content as human-written where a customer would reasonably expect to know. Tell customers when they are talking to an automated assistant.",
+ "**8. Fairness.** Do not use AI to make or materially influence decisions about people (hiring, pay, credit, service eligibility) without approval from the AI owner and a documented human review.",
+ "**9. Intellectual property.** Do not ask AI tools to reproduce copyrighted material, competitors' confidential information or other people's likenesses. Check that AI-generated work is cleared for commercial use before you publish it.",
+ "**10. Security.** Use multi-factor authentication on every AI account. Be alert to AI-generated phishing: verify any unusual request for money, credentials or data through a second channel.",
+ "**11. Incidents.** Report suspected data exposure, harmful AI output or a security issue to the AI owner within 24 hours. Reporting a mistake will not, by itself, lead to discipline.",
+ "**12. Training and review.** All staff complete AI policy training when they join and once a year. The AI owner reviews this policy every six months.",
+ "**Acknowledgement.** I have read and will follow the "+c+" Responsible AI Policy.\nName: ______________ Signature: ______________ Date: ________"].join("\n\n");
+}
+function buildPolicy(){return policyBody()}
+
+function md(src){
+ const out=[];let list=null;
+ const inl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+ const close=()=>{if(list){out.push("</"+list+">");list=null}};
+ src.split("\n\n").forEach(block=>{
+  const lines=block.split("\n");
+  if(lines.every(l=>/^(- |\d+\. )/.test(l))){
+   const t=/^- /.test(lines[0])?"ul":"ol";close();out.push("<"+t+">");
+   lines.forEach(l=>out.push("<li>"+inl(l.replace(/^(- |\d+\. )/,""))+"</li>"));out.push("</"+t+">");return}
+  close();
+  const l=lines[0];
+  if(l.startsWith("### "))out.push("<h3>"+inl(l.slice(4))+"</h3>");
+  else if(l.startsWith("## "))out.push("<h2>"+inl(l.slice(3))+"</h2>");
+  else if(l.startsWith("# "))out.push("<h1>"+inl(l.slice(2))+"</h1>");
+  else if(l.startsWith("> "))out.push("<blockquote>"+inl(block.slice(2))+"</blockquote>");
+  else if(l==="---")out.push("<hr><p class='src'>"+inl(lines.slice(1).join(" "))+"</p>");
+  else{
+   const items=lines.filter(x=>/^- /.test(x)),text=lines.filter(x=>!/^- /.test(x));
+   out.push("<p>"+text.map(inl).join("<br>")+"</p>");
+   if(items.length)out.push("<ul>"+items.map(x=>"<li>"+inl(x.slice(2))+"</li>").join("")+"</ul>");
+  }
+ });
+ close();return out.join("\n");
+}
+function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent="Copied ✓";setTimeout(()=>btn.textContent=o,1500)}).catch(()=>{btn.textContent="Copy blocked here"})}
+function restart(){ans=Array(Q.length).fill(null);show("about")}
+(function(){const h=location.hash,p=store.get("vc_pending");
+ if((h==="#paid"||h==="#preview")&&p&&p.ans&&p.ans.every(x=>x!==null)){ans=p.ans;about=p.about;results();openReport();}
+})();
+</script>
+<script src="../stats.js"></script>
+</body>
+</html>
