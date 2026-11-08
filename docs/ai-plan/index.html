@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanguard Check: free AI readiness scorecard for your business</title>
+<meta name="description" content="Answer 12 questions and see if your business is in the 12% that actually profits from AI. Free score, plus a plan built for your gaps.">
+<meta property="og:title" content="Vanguard Check: is your business in the 12% that profits from AI?">
+<meta property="og:description" content="A free 4-minute AI readiness scorecard for small and mid-sized businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14171f;--muted:#5d6472;--line:#e3e1da;--bg:#f7f5ef;--card:#fff;--accent:#d4572a;--accent2:#1f6f5c}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+.wrap{max-width:780px;margin:0 auto;padding:28px 20px 60px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(34px,7vw,54px);line-height:1.05;font-weight:800}
+h2{font-size:26px;font-weight:600}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);margin:16px 0 24px}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--ink);color:#fff;font:600 16px Inter,sans-serif;padding:14px 26px;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.sm{font-size:14px;padding:9px 16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-family:Fraunces,serif;font-size:30px;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+.src{font-size:12px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+label{display:block;font-size:14px;font-weight:600;margin:14px 0 6px}
+input,select{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);font:15px Inter,sans-serif;color:var(--ink)}
+.progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 22px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.qmeta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.q{font-size:20px;font-weight:600;margin:6px 0 18px}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;font:500 15px Inter,sans-serif;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{border-color:var(--accent);background:#fbeee8}
+.nav{display:flex;justify-content:space-between;margin-top:16px}
+.hidden{display:none!important}
+.brand{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:26px}
+.brand a{color:var(--muted);text-decoration:none}
+.brand b{font-family:Fraunces,serif;font-size:16px}
+.capture{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.capture input{flex:1;min-width:200px;background:var(--card)}
+.upsell input{background:#1e222c;border-color:#3a3f4b;color:#fff;flex:1;min-width:200px}
+.msg{font-size:14px;margin-top:8px}
+.score{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ring{width:150px;height:150px;flex:none}
+.tier{font-family:Fraunces,serif;font-size:28px;font-weight:800}
+.delta{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:#e4f2ec;color:var(--accent2)}
+.pillars{display:grid;gap:12px;margin:20px 0}
+.pill{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;font-size:14px}
+.bar{height:10px;background:var(--line);border-radius:10px;overflow:hidden}
+.bar i{display:block;height:100%}
+.teaser li{margin-bottom:8px}
+.locked{position:relative;margin-top:18px;border:1px dashed var(--line);border-radius:14px;padding:16px 16px 0;max-height:150px;overflow:hidden;color:var(--muted);font-size:14px}
+.locked:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,var(--card) 85%)}
+.upsell{margin-top:26px;background:var(--ink);color:#fff;border-radius:18px;padding:26px}
+.upsell h3{font-size:22px;margin-bottom:6px}
+.upsell p{color:#c9ccd3;margin:0 0 16px}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.tierbox{border:1px solid #3a3f4b;border-radius:12px;padding:14px;display:flex;flex-direction:column}
+.tierbox b{font-family:Fraunces,serif;font-size:24px}
+.tierbox ul{padding-left:18px;margin:8px 0 14px;font-size:13px;color:#c9ccd3;flex:1}
+.tierbox .btn{background:var(--accent);text-align:center}
+.tierbox .btn:hover{background:#fff;color:var(--ink)}
+.notice{background:#262b36;border-radius:12px;padding:14px;font-size:14px;color:#dfe2e8;margin-top:6px}
+.notice .btn{margin-top:10px}
+/* report */
+.rbar{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:18px}
+.rbar .src{margin-left:auto}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 24px}
+.toc a{font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px;text-decoration:none}
+.doc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px}
+.doc h1{font-size:34px;margin-bottom:6px}
+.doc h2{font-size:24px;margin:34px 0 10px;padding-top:18px;border-top:2px solid var(--ink)}
+.doc h3{font-size:18px;margin:22px 0 6px}
+.doc p{margin:8px 0}
+.doc ul,.doc ol{padding-left:22px;margin:8px 0}
+.doc li{margin-bottom:6px}
+.doc blockquote{margin:12px 0;padding:10px 16px;border-left:4px solid var(--accent);background:#fbeee8;border-radius:0 10px 10px 0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+footer{margin-top:40px;font-size:12px;color:var(--muted)}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.pill{grid-template-columns:110px 1fr 38px}.price{grid-template-columns:1fr}.doc{padding:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="brand"><b>Vanguard Check</b><a href="../">by The AI Career Firewall</a></div>
+
+<section id="intro">
+  <div class="eyebrow">Vanguard Check · free 4-minute scorecard</div>
+  <h1>Is your business in the 12% that actually profits from AI?</h1>
+  <p class="lede">Most companies run AI pilots that never pay off. Answer 12 questions and get your score across the four foundations that separate the winners, plus a plan built for your gaps.</p>
+  <button class="btn" onclick="show('about')">Start my scorecard →</button>
+  <p class="src" style="margin-top:12px">Not the owner? Take it for your company anyway. Walking in with an AI plan is the fastest way to become the person your company can't afford to lose.</p>
+  <div class="stats">
+    <div class="stat"><b>56%</b><span>of CEOs saw neither more revenue nor lower costs from AI</span></div>
+    <div class="stat"><b>12%</b><span>got both. PwC calls them the "AI vanguard"</span></div>
+    <div class="stat"><b>44% vs 17%</b><span>of vanguard firms put AI into their products, vs everyone else</span></div>
+  </div>
+  <p class="src">Source: PwC 29th Global CEO Survey (4,454 CEOs, 95 countries, January 2026). Vanguard Check is independent and not affiliated with PwC.</p>
+</section>
+
+<section id="about" class="hidden">
+  <div class="card">
+    <div class="eyebrow">Step 1 of 2 · about you</div>
+    <h2 style="margin-top:6px">So we can tailor your plan</h2>
+    <form onsubmit="saveAbout(event)">
+      <label for="co">Company name</label><input id="co" required maxlength="60" placeholder="Acme Plumbing">
+      <label for="ind">Industry</label><select id="ind"></select>
+      <label for="role">Your role</label>
+      <select id="role"><option>Owner or executive</option><option>Manager</option><option>Employee</option></select>
+      <label for="size">Team size</label>
+      <select id="size"><option>1–10</option><option>11–50</option><option>51–200</option><option>201–1,000</option><option>1,000+</option></select>
+      <div class="nav"><button type="button" class="btn ghost" onclick="show('intro')">← Back</button><button class="btn">Continue →</button></div>
+    </form>
+  </div>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="card">
+    <div class="qmeta"><span id="pillarName"></span><span id="count"></span></div>
+    <div class="progress"><i id="prog"></i></div>
+    <div class="q" id="qtext"></div>
+    <div id="opts"></div>
+    <div class="nav">
+      <button class="btn ghost" onclick="back()">← Back</button>
+      <button class="btn" id="next" onclick="next()">Next →</button>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="hidden">
+  <div class="eyebrow" id="resEyebrow">Your result</div>
+  <div class="score" style="margin:10px 0 6px">
+    <svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#e3e1da" stroke-width="12"/><circle id="arc" cx="60" cy="60" r="50" fill="none" stroke="#d4572a" stroke-width="12" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s"/><text id="scoreNum" x="60" y="68" text-anchor="middle" font-family="Fraunces,serif" font-size="30" font-weight="800">0</text></svg>
+    <div><div class="tier" id="tier"></div><p id="tierDesc" style="color:var(--muted);margin:6px 0 0;max-width:420px"></p><span id="delta" class="delta hidden"></span></div>
+  </div>
+  <div class="card">
+    <h2>Your four foundations</h2>
+    <div class="pillars" id="pillars"></div>
+    <h2 style="margin-top:8px">Start here</h2>
+    <ol class="teaser" id="teaser"></ol>
+    <div class="locked" id="lockedPreview"></div>
+    <form class="capture" onsubmit="emailScore(event)"><input type="email" id="leadEmail" required placeholder="you@company.com" aria-label="Email"><button class="btn sm">Email me my score</button></form>
+    <p class="msg src" id="leadMsg" role="status"></p>
+  </div>
+  <div class="upsell" id="upsell">
+    <h3>Get your full Vanguard Report</h3>
+    <p>Opens right after checkout. A detailed report built from your answers: findings on every question, a week-by-week 12-week roadmap, a KPI tracker, tools matched to your gaps, a ready-to-sign Responsible AI Policy and a team survey.</p>
+    <div class="price">
+      <div class="tierbox"><b>$49</b><span class="src" style="color:#9aa0ab">one-time</span><ul><li>Full personalized report</li><li>Responsible AI Policy, pre-filled</li><li>Tools matched to your gaps</li><li>12-week roadmap + KPI tracker</li></ul><a class="btn sm" href="https://buy.stripe.com/00w5kF0Kj6bOgHKe8p08g04" onclick="saveForCheckout()">Get my report</a></div>
+      <div class="tierbox"><b>$299</b><span class="src" style="color:#9aa0ab">per quarter</span><ul><li>Everything in the report</li><li>60-minute strategy call</li><li>Team pulse survey + quarterly re-score</li><li>Progress tracked against your baseline</li></ul><a class="btn sm" href="https://buy.stripe.com/fZubJ31On2ZCfDG0hz08g05" onclick="saveForCheckout()">Start advisory</a></div>
+    </div>
+    <div id="checkoutMsg" class="notice hidden"></div>
+  </div>
+  <p style="margin-top:20px"><button class="btn ghost" onclick="restart()">Retake</button></p>
+</section>
+
+<section id="unlock" class="hidden"><div class="card"><h2 id="unlockTitle"></h2><div id="unlockBody" style="margin-top:10px"></div></div></section>
+
+<section id="report" class="hidden">
+  <div class="rbar">
+    <button class="btn sm ghost" id="backScore" onclick="show('result')">← Score</button>
+    <button class="btn sm" onclick="copyText(reportMd,this)">Copy full report</button>
+    <button class="btn sm ghost" onclick="copyText(policyOnly(),this)">Copy policy only</button>
+    <span class="src">Paste into Google Docs or Word to edit, print or share.</span>
+  </div>
+  <div class="toc" id="toc"></div>
+  <article class="doc" id="doc"></article>
+</section>
+
+<footer>Vanguard Check by <a href="../">The AI Career Firewall</a> · Contact: theaicareerfirewall@gmail.com<br>Benchmarks from PwC's 2026 Global CEO Survey. Scoring is directional, not a formal audit. Tool names are examples; check current plans and pricing.</footer>
+</div>
+
+<script>
+// Stripe Payment Links redirect to ?session_id=... ; the paid report is generated server-side by the vanguard-report edge function.
+const REPORT_API = "https://hixdlykszbcerlccvhkq.supabase.co/functions/v1/vanguard-report";
+
+const P={
+ tech:{name:"Tech & data",color:"#d4572a"},
+ road:{name:"AI roadmap",color:"#1f6f5c"},
+ risk:{name:"Responsible AI",color:"#c99a1c"},
+ culture:{name:"Adoption culture",color:"#4b5bd6"}
+};
+const IND={
+ "Professional services":["AI first drafts of proposals and client reports from your own templates","Meeting notes turned into client follow-up emails automatically","Q&A assistant over your past projects and know-how"],
+ "Retail & e-commerce":["AI-written product descriptions and SEO pages","24/7 assistant for order, return and shipping questions","Demand forecasting from your sales history"],
+ "Healthcare":["Appointment reminders and intake-form summaries (no clinical decisions; use HIPAA-eligible tools)","Billing and prior-authorization paperwork drafts","Patient FAQ assistant, reviewed by staff"],
+ "Construction & trades":["Faster quotes and estimates from job photos and notes","Automated scheduling and customer status updates","Safety and compliance document drafts"],
+ "Manufacturing":["Predictive maintenance alerts from machine data","Quality reports and defect-trend summaries","Supplier and tariff-exposure monitoring"],
+ "Financial services":["Client report and meeting-prep drafts","Document intake and data extraction","Monitoring client communications for compliance"],
+ "Hospitality":["Review responses and guest messaging","Menu or rate suggestions from demand patterns","Staff scheduling from forecast traffic"],
+ "Real estate":["Listing descriptions and marketing from photos","Lead follow-up and nurture sequences","Market comparison summaries for clients"],
+ "Nonprofit":["Grant application first drafts","Personalized donor thank-yous and updates at scale","Impact reports from program data"],
+ "Other":["Triage of customer emails and inquiries","First drafts of recurring documents","Weekly reporting from your business data"]
+};
+const Q=[
+ {p:"tech",q:"Where does your core business data live?",o:["Spreadsheets and inboxes","A few apps that don't talk to each other","Mostly connected systems, some manual exports","One integrated stack with clean, accessible data"]},
+ {p:"tech",q:"Can you plug an AI tool into your customer or sales data today?",o:["No idea how","Only by copy-pasting","Yes, for one or two systems","Yes, through APIs or connectors we already use"]},
+ {p:"tech",q:"How do you handle AI tool access and accounts?",o:["Everyone uses personal free accounts","A few paid seats, no oversight","Company accounts for most tools","Managed company accounts with data controls"]},
+ {p:"road",q:"Do you have a written plan for where AI fits in the business?",o:["No","Ideas in someone's head","A list of pilots","A prioritized roadmap tied to revenue or cost goals"]},
+ {p:"road",q:"Where are you using AI right now?",o:["Nowhere yet","Individual tasks like writing emails","Inside one business process (support, marketing…)","In the product or service customers pay for"]},
+ {p:"road",q:"How do you measure whether AI is paying off?",o:["We don't","Gut feel","We track time saved","We track revenue and cost impact per use case"]},
+ {p:"risk",q:"Do you have a policy on what staff can put into AI tools?",o:["No","An informal 'be careful'","A written policy","A policy plus training and enforcement"]},
+ {p:"risk",q:"Who checks AI output before it reaches customers?",o:["Nobody specifically","Whoever made it, sometimes","A defined review step for key outputs","Review steps plus logging and spot audits"]},
+ {p:"risk",q:"How prepared are you for AI-related security threats (phishing, data leaks)?",o:["Not at all","Basic antivirus and passwords","MFA and staff awareness training","Formal security program that covers AI risks"]},
+ {p:"culture",q:"How often does your team use generative AI?",o:["Rarely or never","A few people, occasionally","Most people weekly","Most people daily"]},
+ {p:"culture",q:"How does your team feel about AI changing their work?",o:["Worried or resistant","Mixed, mostly unspoken","Curious, some champions","Openly experimenting, wins are shared"]},
+ {p:"culture",q:"What happens to an AI experiment that isn't working?",o:["We never start them","They drag on quietly","We stop them eventually","We have a set checkpoint to kill or scale"]}
+];
+const ACT={
+ tech:["List every system holding customer, sales and operations data, and name one system of record.","Move all staff onto company-managed AI accounts with data controls on.","Connect your system of record to your AI workspace (native connector, Zapier or Make).","Clean up the three data fields AI needs most (for example customer status, deal value, product)."],
+ road:["Draft a one-page AI roadmap: three use cases, each with an owner, a metric and a 90-day target.","Launch use case #1: {UC0}.","Start a monthly 30-minute AI review where each use case reports its number.","Pilot one AI improvement inside what customers pay for: {UC1}."],
+ risk:["Adopt and sign the Responsible AI Policy in this report.","Turn on MFA for every account and run a 30-minute AI-phishing session.","Set human-review rules for customer-facing, legal and financial AI output.","Write a one-page AI incident plan: who to call, what to switch off, who to notify."],
+ culture:["Name two AI champions and start a weekly 20-minute show-and-tell.","Give each role two ready-made prompts for its most repetitive task.","Run the Team Pulse Survey in this report to set a baseline.","Set 30-day kill-or-scale checkpoints on every experiment."]
+};
+
+let i=0,ans=Array(Q.length).fill(null),about={},res=null,reportMd="";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+$("ind").innerHTML=Object.keys(IND).map(k=>"<option>"+k+"</option>").join("");
+function show(id){["intro","about","quiz","result","unlock","report"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo(0,0)}
+function saveAbout(e){e.preventDefault();about={co:$("co").value.trim(),ind:$("ind").value,size:$("size").value,role:$("role").value};i=0;show("quiz");render()}
+function render(){
+ const x=Q[i];
+ $("pillarName").textContent="Step 2 of 2 · "+P[x.p].name;$("count").textContent=(i+1)+" / "+Q.length;
+ $("prog").style.width=(i/Q.length*100)+"%";$("qtext").textContent=x.q;
+ $("opts").innerHTML="";
+ x.o.forEach((t,k)=>{const b=document.createElement("button");b.className="opt"+(ans[i]===k?" sel":"");b.textContent=t;b.onclick=()=>{ans[i]=k;render();setTimeout(next,180)};$("opts").appendChild(b)});
+ $("next").textContent=i===Q.length-1?"See my score →":"Next →";
+}
+function next(){if(ans[i]===null)return;if(i<Q.length-1){i++;render()}else results()}
+function back(){if(i>0){i--;render()}else show("about")}
+
+function compute(){
+ const s={};Object.keys(P).forEach(k=>s[k]=[]);
+ Q.forEach((q,k)=>s[q.p].push(ans[k]));
+ const pct={};Object.keys(s).forEach(k=>pct[k]=Math.round(s[k].reduce((a,b)=>a+b,0)/(s[k].length*3)*100));
+ const total=Math.round(Object.values(pct).reduce((a,b)=>a+b,0)/4);
+ const order=Object.keys(pct).sort((a,b)=>pct[a]-pct[b]);
+ let tier,desc;
+ if(total>=80){tier="AI Vanguard";desc="You look like the 12% of companies PwC found getting both revenue and cost gains from AI. Now scale what works."}
+ else if(total>=55){tier="Builder";desc="You have real foundations, but gaps are capping your returns. Close the weakest pillar first."}
+ else if(total>=30){tier="Experimenter";desc="Like most companies, you're trying AI without the foundations that make it pay. That's fixable in a quarter."}
+ else{tier="Starting line";desc="You're early, which also means no bad habits to undo. Start with the plan below."}
+ return {pct,total,order,tier,desc,date:new Date().toISOString().slice(0,10)};
+}
+function results(){
+ const prev=store.get("vc_last");
+ res=compute();
+ show("result");
+ $("resEyebrow").textContent=about.co+" · your result";
+ $("arc").style.strokeDashoffset=314-314*res.total/100;
+ let n=0;const t=setInterval(()=>{n=Math.min(res.total,n+2);$("scoreNum").textContent=n;if(n>=res.total)clearInterval(t)},20);
+ $("tier").textContent=res.tier;$("tierDesc").textContent=res.desc;
+ if(prev&&prev.co===about.co){const d=res.total-prev.total;$("delta").textContent=(d>=0?"▲ +":"▼ ")+d+" since "+prev.date;$("delta").classList.remove("hidden")}else $("delta").classList.add("hidden");
+ store.set("vc_last",{co:about.co,total:res.total,pct:res.pct,date:res.date});
+ $("pillars").innerHTML=Object.keys(P).map(k=>'<div class="pill"><span>'+P[k].name+'</span><div class="bar"><i style="width:'+res.pct[k]+'%;background:'+P[k].color+'"></i></div><b>'+res.pct[k]+'</b></div>').join("");
+ $("teaser").innerHTML=[ACT[res.order[0]][0],ACT[res.order[0]][1],ACT[res.order[1]][0]].map(x=>"<li>"+esc(fill(x))+"</li>").join("");
+  $("lockedPreview").innerHTML="<b>Your full report includes:</b> executive summary · how you compare to PwC's benchmarks · findings on all 12 answers · a 12-week roadmap · KPI tracker · "+(about.ind)+" use cases · tool shortlist · Responsible AI Policy for "+esc(about.co)+" · Team Pulse Survey…";
+ $("checkoutMsg").classList.add("hidden");
+ const sid=new URLSearchParams(location.search).get("session_id");
+ if(sid){store.set("vc_pending",{ans,about});unlock(sid)}
+ }
+function fill(s){const uc=IND[about.ind]||IND.Other;return s.replace("{UC0}",uc[0]).replace("{UC1}",uc[1])}
+
+function saveForCheckout(){store.set("vc_pending",{ans,about})}
+const SB_URL="https://hixdlykszbcerlccvhkq.supabase.co/rest/v1/cf_waitlist",SB_KEY="sb_publishable_g1BwX7tVmmASdvo28HgCyQ_CZHKMXM6";
+function saveEmail(email,product,msgEl,ok){
+ const src=("ai-plan:"+(res?res.total:"")+":"+(about.role||"")+":"+(about.ind||"")).slice(0,80);
+ msgEl.textContent="Saving...";
+ fetch(SB_URL,{method:"POST",headers:{apikey:SB_KEY,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({email:email,product:product,source:src})})
+  .then(r=>{msgEl.textContent=(r.ok||r.status===409)?ok:(r.status===400?"That email looks off. Try again?":"Something went wrong. Email theaicareerfirewall@gmail.com.")})
+  .catch(()=>{msgEl.textContent="Something went wrong. Email theaicareerfirewall@gmail.com."});
+}
+function preorder(e,plan){e.preventDefault();const f=e.target;saveEmail(f.querySelector("input").value.trim(),"vanguard-"+plan,f.nextElementSibling,"You're on the list. You'll hear from me first.")}
+function emailScore(e){e.preventDefault();saveEmail($("leadEmail").value.trim(),"vanguard-lead",$("leadMsg"),"Saved. I'll send your score and one tip for your weakest area.")}
+function openReport(){
+ show("report");
+ $("doc").innerHTML=md(reportMd);
+ const hs=[...$("doc").querySelectorAll("h2")];
+ hs.forEach((h,k)=>h.id="s"+k);
+ $("toc").innerHTML=hs.map((h,k)=>'<a href="#" onclick="document.getElementById(\'s'+k+'\').scrollIntoView({behavior:\'smooth\'});return false">'+esc(h.textContent.replace(/^\d+\.\s*/,""))+'</a>').join("");
+ $("backScore").classList.toggle("hidden",!res);
+}
+function policyOnly(){const a=reportMd.indexOf("### "),b=reportMd.indexOf("## 9.");const i=reportMd.indexOf("## 8.");return i<0?reportMd:reportMd.slice(reportMd.indexOf("### ",i),b<0?undefined:b).trim()}
+function status(title,html){show("unlock");$("unlockTitle").textContent=title;$("unlockBody").innerHTML=html}
+async function unlock(id){
+ status("Preparing your report…","<p>Confirming your payment with Stripe. This takes a few seconds.</p>");
+ const p=store.get("vc_pending")||{};
+ for(let t=0;t<4;t++){
+  let r,j={};
+  try{r=await fetch(REPORT_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:id,ans:p.ans,about:p.about})});j=await r.json().catch(()=>({}))}catch(e){r=null}
+  if(r&&r.ok){reportMd=j.markdown;about=p.about&&p.about.co===j.company?p.about:{co:j.company};
+   if(p.ans&&p.about&&p.about.co===j.company){ans=p.ans;res=compute()}
+   store.set("vc_session",id);openReport();return}
+  if(r&&r.status===402){await new Promise(x=>setTimeout(x,3000));continue}
+  if(r&&r.status===409){status("One more step","<p>Your payment went through. Retake the 12 questions on this device and your full report will open right away.</p><button class='btn' onclick='show(\"about\")'>Answer the questions</button>");store.set("vc_session",id);return}
+  break;
+ }
+ status("We couldn't open your report","<p>If you just paid, wait a minute and refresh this page. Still stuck? Email <b>theaicareerfirewall@gmail.com</b> with the email you paid with and we'll send it over.</p>");
+}
+function md(src){
+ const out=[];let list=null;
+ const inl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+ const close=()=>{if(list){out.push("</"+list+">");list=null}};
+ src.split("\n\n").forEach(block=>{
+  const lines=block.split("\n");
+  if(lines.every(l=>/^(- |\d+\. )/.test(l))){
+   const t=/^- /.test(lines[0])?"ul":"ol";close();out.push("<"+t+">");
+   lines.forEach(l=>out.push("<li>"+inl(l.replace(/^(- |\d+\. )/,""))+"</li>"));out.push("</"+t+">");return}
+  close();
+  const l=lines[0];
+  if(l.startsWith("### "))out.push("<h3>"+inl(l.slice(4))+"</h3>");
+  else if(l.startsWith("## "))out.push("<h2>"+inl(l.slice(3))+"</h2>");
+  else if(l.startsWith("# "))out.push("<h1>"+inl(l.slice(2))+"</h1>");
+  else if(l.startsWith("> "))out.push("<blockquote>"+inl(block.slice(2))+"</blockquote>");
+  else if(l==="---")out.push("<hr><p class='src'>"+inl(lines.slice(1).join(" "))+"</p>");
+  else{
+   const items=lines.filter(x=>/^- /.test(x)),text=lines.filter(x=>!/^- /.test(x));
+   out.push("<p>"+text.map(inl).join("<br>")+"</p>");
+   if(items.length)out.push("<ul>"+items.map(x=>"<li>"+inl(x.slice(2))+"</li>").join("")+"</ul>");
+  }
+ });
+ close();return out.join("\n");
+}
+function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent="Copied ✓";setTimeout(()=>btn.textContent=o,1500)}).catch(()=>{btn.textContent="Copy blocked here"})}
+function restart(){ans=Array(Q.length).fill(null);show("about")}
+(function(){const sid=new URLSearchParams(location.search).get("session_id");
+ if(sid&&/^cs_(live|test)_[A-Za-z0-9]+$/.test(sid))unlock(sid);
+})();
+</script>
+<script src="../stats.js"></script>
+</body>
+</html>
