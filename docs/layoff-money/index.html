@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laid off? Your money runway and 401(k) calculator | The AI Career Firewall</title>
+<meta name="description" content="Free calculators for the first 30 days after a layoff: how many months your money lasts, what cashing out your 401(k) really costs, and the deadlines you can't miss.">
+<meta property="og:title" content="Laid off? Know your runway before you touch your 401(k)">
+<meta property="og:description" content="Free runway calculator, 401(k) cash-out calculator and first-30-days checklist.">
+<meta property="og:image" content="https://jmontanez.github.io/career-firewall-media/assets/header.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="../site.css">
+<style>
+.calc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.fields label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.fields label b{color:var(--fg);font-weight:600;font-size:15px}
+.fields input,.fields select{font:inherit;font-size:17px;padding:11px 12px;border-radius:8px;border:1px solid var(--line);background:#05080d;color:var(--fg);width:100%}
+.money{position:relative}.money::before{content:"$";position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}.money input{padding-left:24px}
+.tick{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--muted)}.tick input{width:18px;height:18px;margin-top:3px;accent-color:var(--accent);flex:none}
+.result{background:#05080d;border:1px solid var(--line);border-radius:10px;padding:16px}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,44px);line-height:1.05;color:var(--accent)}
+.big small{font-size:16px;color:var(--muted);font-weight:600}
+.sub{color:var(--muted);font-size:15px;margin-top:6px}
+.stack-bar{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:14px 0 8px;background:var(--line)}
+.stack-bar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--c)}
+.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(26px,1fr));gap:4px;margin-top:14px}
+.months i{height:26px;border-radius:4px;background:var(--accent);opacity:.9}
+.months i.part{opacity:.4}.months i.empty{background:var(--line);opacity:1}
+.warn{border-left:4px solid var(--accent);background:var(--panel-2);padding:12px 14px;border-radius:4px;font-size:15px}
+.checklist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.checklist li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;gap:12px}
+.checklist input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin-top:3px}
+.checklist .when{font-family:var(--mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.checklist p{color:var(--muted);font-size:15px;margin-top:2px}
+.checklist li.done{opacity:.55}
+form.plan .row input[type=email]{flex:1 1 220px;min-width:0;font:inherit;font-size:17px;padding:13px 14px;border-radius:8px;border:1px solid var(--line);background:#05080d;color:var(--fg)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a href="../"><img src="../assets/header.png" alt="The AI Career Firewall"></a>
+  <nav><a href="../free/">Free kit</a><a href="../interview/">Interview Firewall</a></nav>
+</div></header>
+
+<main>
+<section><div class="wrap stack">
+  <span class="eyebrow">Free · for the first 30 days after a layoff</span>
+  <h1>Know your runway before you touch your 401(k).</h1>
+  <p class="lead">When I got laid off, the first week was a blur of decisions with deadlines nobody explained. These are the tools I wish I'd had: how long your money lasts, what cashing out really costs, and the dates you can't miss.</p>
+  <div class="row"><a class="btn" href="#runway">Calculate my runway</a><a class="btn ghost" href="#cashout">Should I cash out my 401(k)?</a></div>
+  <p class="fine">Nothing you type leaves your browser. Educational estimates, not tax, legal or financial advice.</p>
+</div></section>
+
+<section id="runway"><div class="wrap stack">
+  <span class="eyebrow">Tool 1</span>
+  <h2>How long will my money last?</h2>
+  <div class="calc">
+    <div class="fields">
+      <label><b>Cash you can use</b>Checking, savings, emergency fund<span class="money"><input id="r_cash" type="number" inputmode="decimal" min="0" value="12000"></span></label>
+      <label><b>Severance after taxes</b>Total you'll actually receive<span class="money"><input id="r_sev" type="number" inputmode="decimal" min="0" value="8000"></span></label>
+      <label><b>Weekly unemployment benefit</b>Your state's estimate (0 if not eligible)<span class="money"><input id="r_ui" type="number" inputmode="decimal" min="0" value="450"></span></label>
+      <label><b>Weeks of unemployment</b>Most states: 12–26 weeks<input id="r_uiw" type="number" inputmode="numeric" min="0" max="52" value="26"></label>
+      <label><b>Monthly essentials</b>Housing, food, utilities, debt minimums, car<span class="money"><input id="r_exp" type="number" inputmode="decimal" min="0" value="4200"></span></label>
+      <label><b>Monthly health insurance</b>COBRA or marketplace premium<span class="money"><input id="r_hi" type="number" inputmode="decimal" min="0" value="650"></span></label>
+      <label><b>Other monthly income</b>Partner's pay you count on, side work<span class="money"><input id="r_oth" type="number" inputmode="decimal" min="0" value="0"></span></label>
+    </div>
+    <div class="result" aria-live="polite">
+      <div class="big" id="r_big">–</div>
+      <div class="sub" id="r_sub"></div>
+      <div class="months" id="r_months" aria-hidden="true"></div>
+    </div>
+    <div class="warn" id="r_tip"></div>
+  </div>
+</div></section>
+
+<section id="cashout"><div class="wrap stack">
+  <span class="eyebrow">Tool 2</span>
+  <h2>What would cashing out my 401(k) really cost?</h2>
+  <p>Most people only see the balance. This shows what lands in your bank account, and what that money would have grown into if you'd left it alone.</p>
+  <div class="calc">
+    <div class="fields">
+      <label><b>Amount to cash out</b>Pre-tax (traditional) 401(k)<span class="money"><input id="c_amt" type="number" inputmode="decimal" min="0" value="20000"></span></label>
+      <label><b>Your age</b><input id="c_age" type="number" inputmode="numeric" min="18" max="80" value="42"></label>
+      <label><b>Federal tax bracket</b>Your top rate this year, including the withdrawal
+        <select id="c_fed"><option value="10">10%</option><option value="12">12%</option><option value="22" selected>22%</option><option value="24">24%</option><option value="32">32%</option><option value="35">35%</option><option value="37">37%</option></select></label>
+      <label><b>State income tax rate</b>0 if your state has none<input id="c_state" type="number" inputmode="decimal" min="0" max="15" step="0.1" value="5"></label>
+      <label><b>Growth rate if left invested</b>Long-run yearly assumption<input id="c_ret" type="number" inputmode="decimal" min="0" max="12" step="0.5" value="6"></label>
+      <label><b>Retirement age</b><input id="c_ret_age" type="number" inputmode="numeric" min="50" max="75" value="67"></label>
+    </div>
+    <label class="tick"><input id="c_55" type="checkbox"> I left this job in or after the year I turned 55 (the "Rule of 55" can waive the 10% penalty for this employer's plan)</label>
+    <div class="result" aria-live="polite">
+      <div class="big" id="c_big">–</div>
+      <div class="sub" id="c_sub"></div>
+      <div class="stack-bar" id="c_bar"></div>
+      <div class="legend" id="c_legend"></div>
+    </div>
+    <div class="result"><div class="big" id="c_fv" style="color:var(--fg)">–</div><div class="sub" id="c_fv_sub"></div></div>
+    <div class="warn" id="c_tip"></div>
+  </div>
+  <p class="fine">Assumes a traditional (pre-tax) 401(k). Roth contributions and outstanding loans are treated differently. Federal estimate applies your bracket to the whole withdrawal; your real bill may be lower or higher. Your plan withholds 20% for federal tax upfront, which is a prepayment, not the final bill.</p>
+</div></section>
+
+<section id="checklist"><div class="wrap stack">
+  <span class="eyebrow">Tool 3</span>
+  <h2>The first 30 days: deadlines you can't miss</h2>
+  <p>Tap to check off. Your progress is saved on this device.</p>
+  <ul class="checklist" id="cl"></ul>
+</div></section>
+
+<section id="plan"><div class="wrap stack">
+  <span class="eyebrow">Coming next</span>
+  <h2>Layoff Money Plan</h2>
+  <p>Your numbers, turned into a week-by-week plan: what to file when, which bills to pause or negotiate, health insurance compared side by side, a severance review checklist and reminders before every deadline. Join the list for first access and a founding price.</p>
+  <form class="plan" id="planForm">
+    <div class="row">
+      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email">
+      <button class="btn" type="submit">Get early access</button>
+    </div>
+    <p class="wl-msg fine" role="status" aria-live="polite" style="margin-top:8px"></p>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>The AI Career Firewall · Contact: theaicareerfirewall@gmail.com</span>
+  <span>Educational tools only, not tax, legal or financial advice. Rules vary by state and by plan; confirm with your plan administrator, your state unemployment office or a professional.</span>
+</div></footer>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const num=id=>Math.max(0,parseFloat($(id).value)||0);
+const usd=n=>"$"+Math.round(n).toLocaleString("en-US");
+
+function runway(){
+  const cash=num("r_cash")+num("r_sev"), ui=num("r_ui"), uiw=Math.min(52,num("r_uiw"));
+  const need=num("r_exp")+num("r_hi")-num("r_oth");
+  const uiMonthly=ui*52/12, uiMonths=uiw*12/52;
+  // Spend through the months unemployment pays, then cash alone.
+  const last=n=>{if(n<=0)return Infinity;const g=Math.max(0,n-uiMonthly);if(g*uiMonths>=cash)return g>0?cash/g:Infinity;return uiMonths+(cash-g*uiMonths)/n};
+  const months=last(need);
+  const big=$("r_big"),sub=$("r_sub"),grid=$("r_months"),tip=$("r_tip");
+  if(months===Infinity){big.innerHTML="Covered <small>at these numbers</small>";sub.textContent="Your other income covers your monthly costs.";grid.innerHTML="";tip.textContent="Still file for unemployment if you're eligible, and keep your health coverage active.";return}
+  const m=Math.floor(months*10)/10, d=new Date();d.setDate(d.getDate()+Math.round(months*30.44));
+  big.innerHTML=(m>=24?"24+":m.toFixed(1))+" <small>months of runway</small>";
+  sub.textContent="Your money runs out around "+d.toLocaleDateString("en-US",{month:"long",year:"numeric"})+". You need "+usd(need)+" a month"+(ui>0?", and unemployment covers "+usd(Math.min(need,uiMonthly))+" of it for about "+uiMonths.toFixed(1)+" months.":".");
+  const shown=Math.min(24,Math.ceil(months));let html="";
+  for(let i=0;i<24;i++)html+="<i class='"+(i<Math.floor(months)?"":i<shown?"part":"empty")+"'></i>";
+  grid.innerHTML=html;
+  const cut10=need*0.1;
+  tip.innerHTML=months<3?"<b>Under 3 months.</b> File for unemployment this week, call your lender and card companies about hardship programs before you miss a payment, and price marketplace health plans against COBRA. Try to cover the gap before touching your 401(k): see Tool 2 for what that costs.":
+    months<6?"<b>3 to 6 months.</b> Most job searches take longer than people expect. Cutting "+usd(cut10)+" a month (10%) would add about "+(last(need-cut10)-months).toFixed(1)+" months.":
+    "<b>6+ months.</b> You have room to be selective. Don't let a comfortable runway turn into a slow start: set a weekly application and networking target now.";
+}
+
+function cashout(){
+  const amt=num("c_amt"), age=num("c_age"), fed=num("c_fed")/100, st=Math.min(15,num("c_state"))/100, r=num("c_ret")/100, retAge=Math.max(age,num("c_ret_age"));
+  const r55=$("c_55").checked, pen=(age>=59.5||(r55&&age>=55))?0:0.10;
+  const fedTax=amt*fed, stTax=amt*st, penalty=amt*pen, net=Math.max(0,amt-fedTax-stTax-penalty);
+  const lost=amt-net;
+  $("c_big").innerHTML=usd(net)+" <small>lands in your account</small>";
+  $("c_sub").textContent="Of "+usd(amt)+", about "+usd(lost)+" ("+(amt?Math.round(lost/amt*100):0)+"%) goes to taxes"+(pen?" and the 10% early-withdrawal penalty":"")+". Your plan will hold back 20% upfront ("+usd(amt*0.2)+") and you settle the rest at tax time.";
+  const parts=[["Federal tax",fedTax,"#f58c2d"],["State tax",stTax,"#c96a1c"],["10% penalty",penalty,"#e0483e"],["You keep",net,"#5fd39b"]].filter(p=>p[1]>0);
+  $("c_bar").innerHTML=parts.map(p=>"<i style='width:"+(amt?p[1]/amt*100:0)+"%;background:"+p[2]+"'></i>").join("");
+  $("c_legend").innerHTML=parts.map(p=>"<span style='--c:"+p[2]+"'>"+p[0]+" "+usd(p[1])+"</span>").join("");
+  const yrs=Math.max(0,retAge-age), fv=amt*Math.pow(1+r,yrs);
+  $("c_fv").textContent=usd(fv);
+  $("c_fv_sub").textContent="What the same "+usd(amt)+" could grow to by age "+retAge+" at "+(r*100).toFixed(1)+"% a year if you leave it invested. Cashing out trades that for "+usd(net)+" today.";
+  $("c_tip").innerHTML="<b>Before you cash out:</b> you usually don't have to decide now. You can leave the money in your old plan (if the balance is over $7,000), roll it into an IRA or your next employer's plan with a <b>direct rollover</b> (no 20% withholding, no tax), or take only part of it. If you have a 401(k) loan, ask your plan when it comes due: an unpaid balance can be taxed like a withdrawal unless you repay it by your tax-filing deadline.";
+}
+
+const CL=[
+ ["Day 1–3","File for unemployment","File in the state where you worked, even if you got severance. Some states delay benefits while severance is paid, but filing late can cost you weeks."],
+ ["Day 1–7","Don't sign the severance agreement yet","Read what you're giving up. If you're 40 or older, federal law gives you at least 21 days to consider it (45 in a group layoff) and 7 days to revoke after signing. Ask for more if the offer is thin: pay, health coverage, equity vesting, a reference."],
+ ["Day 1–7","Get your final pay and paperwork","Check your last paycheck, unused vacation payout (state law varies), and get copies of pay stubs, your offer letter, benefits summaries and performance reviews before your access ends."],
+ ["Before last day","Use your FSA balance","Health FSA money is usually use-it-or-lose-it when coverage ends. HSA money is yours to keep."],
+ ["Within 60 days","Decide on health insurance","Losing job coverage opens a 60-day window to buy a marketplace plan, often cheaper than COBRA, especially with lower income this year. You also have 60 days to elect COBRA, and it's retroactive."],
+ ["Within 90 days","Check your stock options","Vested stock options often expire about 90 days after you leave. Check your grant documents now."],
+ ["Week 2","Make your money plan","Use Tool 1. List bills you can pause, lower or negotiate. Call lenders before you miss a payment: hardship programs are easier to get in advance."],
+ ["Week 2–4","Decide what to do with your 401(k)","Leave it, roll it over directly, or (last resort) cash out part of it. Use Tool 2 before you choose. If you're unsure, there's no deadline for most balances over $7,000."],
+ ["Week 2–4","Update your resume and LinkedIn","Lead every bullet with a number. My free resume coach and Interview Firewall can help."]
+];
+let done={};try{done=JSON.parse(localStorage.getItem("cf_layoff_cl")||"{}")}catch(e){}
+function drawCL(){
+  $("cl").innerHTML=CL.map((c,i)=>"<li class='"+(done[i]?"done":"")+"'><input type='checkbox' id='cl"+i+"' "+(done[i]?"checked":"")+" aria-label='"+c[1].replace(/'/g,"")+"'><div><div class='when'>"+c[0]+"</div><label for='cl"+i+"'><b>"+c[1]+"</b></label><p>"+c[2]+"</p></div></li>").join("");
+  CL.forEach((c,i)=>$("cl"+i).addEventListener("change",e=>{done[i]=e.target.checked;try{localStorage.setItem("cf_layoff_cl",JSON.stringify(done))}catch(err){}drawCL()}));
+}
+
+document.querySelectorAll("#runway input").forEach(el=>el.addEventListener("input",runway));
+document.querySelectorAll("#cashout input,#cashout select").forEach(el=>el.addEventListener("input",cashout));
+runway();cashout();drawCL();
+
+// Paid-plan waitlist -> existing cf_waitlist table (insert-only).
+const f=$("planForm"),msg=f.querySelector(".wl-msg"),btn=f.querySelector("button");
+f.addEventListener("submit",e=>{
+  e.preventDefault();btn.disabled=true;msg.textContent="Adding you...";
+  fetch("https://hixdlykszbcerlccvhkq.supabase.co/rest/v1/cf_waitlist",{method:"POST",headers:{apikey:"sb_publishable_g1BwX7tVmmASdvo28HgCyQ_CZHKMXM6","Content-Type":"application/json",Prefer:"return=minimal"},
+    body:JSON.stringify({email:f.email.value.trim(),product:"layoff-money-plan",source:"layoff-money-page"})})
+  .then(r=>{if(r.ok||r.status===409){f.reset();msg.textContent="You're on the list. I'll email you first when the plan opens."}else if(r.status===400){msg.textContent="That email looks off. Try again?"}else{msg.textContent="Something went wrong. Email theaicareerfirewall@gmail.com and I'll add you."}})
+  .catch(()=>{msg.textContent="Something went wrong. Email theaicareerfirewall@gmail.com and I'll add you."})
+  .finally(()=>{btn.disabled=false});
+});
+})();
+</script>
+<script src="../stats.js"></script>
+</body>
+</html>
