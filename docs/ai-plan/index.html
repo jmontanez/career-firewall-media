@@ -84,6 +84,10 @@ input,select{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid 
 .doc li{margin-bottom:6px}
 .doc blockquote{margin:12px 0;padding:10px 16px;border-left:4px solid var(--accent);background:#fbeee8;border-radius:0 10px 10px 0}
 .doc hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+.savebox{background:#e4f2ec;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:10px}
+.guide{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:18px 20px;margin-bottom:18px}
+.guide h3{font-size:19px;margin-bottom:6px}.guide ol{padding-left:20px;margin:8px 0 0}.guide li{margin-bottom:6px;font-size:15px}
+@media print{.rbar,.toc,.savebox,footer,.brand{display:none!important}body{background:#fff}.doc{border:0;padding:0}.guide{break-after:page}.doc h2{break-after:avoid}.wrap{max-width:none;padding:0}}
 footer{margin-top:40px;font-size:12px;color:var(--muted)}
 @media(max-width:560px){.stats{grid-template-columns:1fr}.pill{grid-template-columns:110px 1fr 38px}.price{grid-template-columns:1fr}.doc{padding:20px}}
 </style>
@@ -167,11 +171,14 @@ footer{margin-top:40px;font-size:12px;color:var(--muted)}
 <section id="report" class="hidden">
   <div class="rbar">
     <button class="btn sm ghost" id="backScore" onclick="show('result')">← Score</button>
-    <button class="btn sm" onclick="copyText(reportMd,this)">Copy full report</button>
+    <button class="btn sm" onclick="downloadWord(this)">Download Word file</button>
+    <button class="btn sm ghost" onclick="window.print()">Print / save PDF</button>
     <button class="btn sm ghost" onclick="copyText(policyOnly(),this)">Copy policy only</button>
-    <span class="src">Paste into Google Docs or Word to edit, print or share.</span>
+    <button class="btn sm ghost" onclick="copyText(location.href,this)">Copy my report link</button>
   </div>
+  <div class="savebox" id="savebox"><b>Save this page.</b> Your report link works forever on any device: bookmark it or tap "Copy my report link" and email it to yourself.</div>
   <div class="toc" id="toc"></div>
+  <div class="guide" id="guide"></div>
   <article class="doc" id="doc"></article>
 </section>
 
@@ -302,10 +309,29 @@ function emailScore(e){e.preventDefault();saveEmail($("leadEmail").value.trim(),
 function openReport(){
  show("report");
  $("doc").innerHTML=md(reportMd);
+ $("guide").innerHTML=GUIDE;
  const hs=[...$("doc").querySelectorAll("h2")];
  hs.forEach((h,k)=>h.id="s"+k);
  $("toc").innerHTML=hs.map((h,k)=>'<a href="#" onclick="document.getElementById(\'s'+k+'\').scrollIntoView({behavior:\'smooth\'});return false">'+esc(h.textContent.replace(/^\d+\.\s*/,""))+'</a>').join("");
  $("backScore").classList.toggle("hidden",!res);
+}
+const GUIDE='<h3>How to use this report</h3><p class="src">About 30 minutes to set up, then one action a week.</p><ol>'+
+ '<li><b>Read section 1</b> (2 minutes). It names your biggest gap and your three priorities.</li>'+
+ '<li><b>Assign owners</b> in section 4. Every week has an "Owner" blank: put one name on each, ideally in a 30-minute team meeting.</li>'+
+ '<li><b>Write today\'s numbers</b> in the KPI tracker (section 6). Check them monthly.</li>'+
+ '<li><b>Adopt the policy</b> in section 8 within 14 days: fill the blanks, adjust anything that doesn\'t fit your business, walk the team through it, collect signatures.</li>'+
+ '<li><b>Send the Team Pulse Survey</b> (section 9) anonymously now and again on day 90.</li>'+
+ '<li><b>Retake the scorecard on day 90</b> with the same company name to see your progress.</li></ol>'+
+ '<p class="src" style="margin-top:8px">Download the Word file to edit it, or print it to PDF to share. The policy is a starting template, not legal advice: if you\'re in a regulated industry, have counsel review it.</p>';
+function downloadWord(btn){
+ const html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Vanguard Report</title>'+
+  '<style>body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4}h1{font-size:22pt}h2{font-size:16pt;margin-top:18pt;border-top:1px solid #999;padding-top:6pt}h3{font-size:13pt}blockquote{border-left:3pt solid #d4572a;padding-left:8pt;margin-left:0}</style></head><body>'+
+  '<div>'+GUIDE+'</div>'+md(reportMd)+'</body></html>';
+ const blob=new Blob(["\ufeff",html],{type:"application/msword"});
+ const name="Vanguard Report - "+(about.co||"report").replace(/[^\w -]+/g,"").trim()+".doc";
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+ setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
+ const o=btn.textContent;btn.textContent="Downloaded ✓";setTimeout(()=>btn.textContent=o,1500);
 }
 function policyOnly(){const a=reportMd.indexOf("### "),b=reportMd.indexOf("## 9.");const i=reportMd.indexOf("## 8.");return i<0?reportMd:reportMd.slice(reportMd.indexOf("### ",i),b<0?undefined:b).trim()}
 function status(title,html){show("unlock");$("unlockTitle").textContent=title;$("unlockBody").innerHTML=html}
