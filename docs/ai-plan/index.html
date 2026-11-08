@@ -154,8 +154,8 @@ footer{margin-top:40px;font-size:12px;color:var(--muted)}
     <h3>Get your full Vanguard Report</h3>
     <p>Opens right after checkout. A detailed report built from your answers: findings on every question, a week-by-week 12-week roadmap, a KPI tracker, tools matched to your gaps, a ready-to-sign Responsible AI Policy and a team survey.</p>
     <div class="price">
-      <div class="tierbox"><b>$49</b><span class="src" style="color:#9aa0ab">one-time</span><ul><li>Full personalized report</li><li>Responsible AI Policy, pre-filled</li><li>Tools matched to your gaps</li><li>12-week roadmap + KPI tracker</li></ul><a class="btn sm" href="https://buy.stripe.com/00w5kF0Kj6bOgHKe8p08g04" onclick="saveForCheckout()">Get my report</a></div>
-      <div class="tierbox"><b>$299</b><span class="src" style="color:#9aa0ab">per quarter</span><ul><li>Everything in the report</li><li>60-minute strategy call</li><li>Team pulse survey + quarterly re-score</li><li>Progress tracked against your baseline</li></ul><a class="btn sm" href="https://buy.stripe.com/fZubJ31On2ZCfDG0hz08g05" onclick="saveForCheckout()">Start advisory</a></div>
+      <div class="tierbox"><b>$49</b><span class="src" style="color:#9aa0ab">one-time</span><ul><li>Full personalized report</li><li>Responsible AI Policy, pre-filled</li><li>Tools matched to your gaps</li><li>12-week roadmap + KPI tracker</li></ul><a class="btn sm" href="https://buy.stripe.com/00w5kF0Kj6bOgHKe8p08g04" onclick="return goCheckout(event)">Get my report</a></div>
+      <div class="tierbox"><b>$299</b><span class="src" style="color:#9aa0ab">per quarter</span><ul><li>Everything in the report</li><li>60-minute strategy call</li><li>Team pulse survey + quarterly re-score</li><li>Progress tracked against your baseline</li></ul><a class="btn sm" href="https://buy.stripe.com/fZubJ31On2ZCfDG0hz08g05" onclick="return goCheckout(event)">Start advisory</a></div>
     </div>
     <div id="checkoutMsg" class="notice hidden"></div>
   </div>
@@ -272,7 +272,23 @@ function results(){
  }
 function fill(s){const uc=IND[about.ind]||IND.Other;return s.replace("{UC0}",uc[0]).replace("{UC1}",uc[1])}
 
-function saveForCheckout(){store.set("vc_pending",{ans,about})}
+// Save the answers on the server before checkout; Stripe carries the draft id back as client_reference_id,
+// so the paid report opens on any device without retaking the quiz.
+async function goCheckout(e){
+ e.preventDefault();
+ const a=e.currentTarget,url=a.href;
+ if(a.dataset.busy)return false;a.dataset.busy="1";const label=a.textContent;a.textContent="Opening checkout…";
+ store.set("vc_pending",{ans,about});
+ let ref="";
+ try{
+  const c=new AbortController();setTimeout(()=>c.abort(),5000);
+  const r=await fetch(REPORT_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"draft",ans,about}),signal:c.signal});
+  if(r.ok)ref=(await r.json()).draft||"";
+ }catch(err){}
+ location.href=ref?url+"?client_reference_id="+encodeURIComponent(ref):url;
+ setTimeout(()=>{a.textContent=label;delete a.dataset.busy},4000);
+ return false;
+}
 const SB_URL="https://hixdlykszbcerlccvhkq.supabase.co/rest/v1/cf_waitlist",SB_KEY="sb_publishable_g1BwX7tVmmASdvo28HgCyQ_CZHKMXM6";
 function saveEmail(email,product,msgEl,ok){
  const src=("ai-plan:"+(res?res.total:"")+":"+(about.role||"")+":"+(about.ind||"")).slice(0,80);
@@ -303,7 +319,7 @@ async function unlock(id){
    if(p.ans&&p.about&&p.about.co===j.company){ans=p.ans;res=compute()}
    store.set("vc_session",id);openReport();return}
   if(r&&r.status===402){await new Promise(x=>setTimeout(x,3000));continue}
-  if(r&&r.status===409){status("One more step","<p>Your payment went through. Retake the 12 questions on this device and your full report will open right away.</p><button class='btn' onclick='show(\"about\")'>Answer the questions</button>");store.set("vc_session",id);return}
+  if(r&&r.status===409){status("One more step","<p>Your payment went through, but we couldn't find your answers. Retake the 12 questions once and your full report will open right away.</p><button class='btn' onclick='show(\"about\")'>Answer the questions</button>");store.set("vc_session",id);return}
   break;
  }
  status("We couldn't open your report","<p>If you just paid, wait a minute and refresh this page. Still stuck? Email <b>theaicareerfirewall@gmail.com</b> with the email you paid with and we'll send it over.</p>");
